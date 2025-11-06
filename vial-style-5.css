@@ -1,0 +1,297 @@
+/* Vial Style 5 - Premium Injection Vial */
+
+.peptide-vial-style5 {
+    display: inline-block;
+    position: relative;
+}
+
+.vial-container-style5 {
+    width: 130px;
+    height: 340px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Premium Vial Body */
+.vial-body-style5 {
+    width: 130px;
+    height: 260px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.99) 0%, 
+        rgba(252,254,255,0.98) 20%,
+        rgba(255,255,255,0.99) 40%,
+        rgba(250,252,254,0.97) 60%,
+        rgba(255,255,255,0.99) 80%,
+        rgba(248,250,252,0.96) 100%);
+    border-radius: 10px 10px 65px 65px;
+    border: 3px solid rgba(160, 170, 180, 0.7);
+    position: relative;
+    box-shadow: 
+        inset 4px 0 8px rgba(255,255,255,0.95),
+        inset -4px 0 8px rgba(0,0,0,0.05),
+        inset 0 4px 8px rgba(255,255,255,0.9),
+        0 10px 30px rgba(0,0,0,0.15),
+        0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Multi-dose Vial Neck */
+.vial-neck-style5 {
+    width: 80px;
+    height: 35px;
+    background: linear-gradient(180deg, 
+        rgba(245,248,250,0.98) 0%, 
+        rgba(235,240,245,0.95) 100%);
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid rgba(160, 170, 180, 0.7);
+    border-bottom: none;
+    box-shadow: 
+        inset 2px 0 4px rgba(255,255,255,0.9),
+        inset -2px 0 4px rgba(0,0,0,0.05);
+}
+
+/* Rubber Stopper Premium */
+.rubber-stopper-style5 {
+    width: 70px;
+    height: 25px;
+    background: linear-gradient(180deg, 
+        #2c3e50 0%, 
+        #34495e 30%, 
+        #2c3e50 70%, 
+        #1a252f 100%);
+    border-radius: 35px 35px 6px 6px;
+    position: absolute;
+    top: -43px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 
+        0 4px 10px rgba(0,0,0,0.4),
+        inset 0 1px 3px rgba(255,255,255,0.1),
+        inset 0 -1px 3px rgba(0,0,0,0.3);
+    border: 1px solid #1a252f;
+}
+
+.stopper-center-style5 {
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 15px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.08) 0%, 
+        rgba(255,255,255,0.03) 100%);
+    border-radius: 25px;
+}
+
+/* Flip-off Cap */
+.flip-cap-style5 {
+    width: 85px;
+    height: 30px;
+    background: linear-gradient(180deg, 
+        #3498db 0%, 
+        #2980b9 30%, 
+        #1f4e79 70%, 
+        #1a3d5c 100%);
+    border-radius: 0 0 6px 6px;
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 
+        0 3px 8px rgba(0,0,0,0.3),
+        inset 0 1px 2px rgba(255,255,255,0.3);
+    border: 1px solid #1a3d5c;
+}
+
+.cap-text-style5 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.4rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+}
+
+/* Injection Port Marking */
+.injection-port-style5 {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #e74c3c 0%, #c0392b 100%);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Liquid Content Multi-dose */
+.liquid-multidose-style5 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 80px;
+    background: linear-gradient(180deg, 
+        rgba(139, 90, 150, 0.2) 0%, 
+        rgba(139, 90, 150, 0.3) 50%, 
+        rgba(139, 90, 150, 0.4) 100%);
+    border-radius: 55px 55px 6px 6px;
+    animation: liquidBubble 6s ease-in-out infinite;
+}
+
+@keyframes liquidBubble {
+    0%, 100% { transform: translateX(-50%) scaleY(1); opacity: 0.3; }
+    50% { transform: translateX(-50%) scaleY(1.05); opacity: 0.5; }
+}
+
+/* Volume Scale */
+.volume-scale-style5 {
+    position: absolute;
+    left: 8px;
+    top: 50px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.scale-mark-style5 {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.scale-line-style5 {
+    width: 8px;
+    height: 1px;
+    background: rgba(0,0,0,0.4);
+}
+
+.scale-text-style5 {
+    font-size: 0.4rem;
+    color: rgba(0,0,0,0.5);
+    font-weight: 600;
+}
+
+/* Premium Label */
+.premium-label-style5 {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #2c3e50;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 
+        0 4px 12px rgba(0,0,0,0.15),
+        inset 0 1px 2px rgba(255,255,255,0.9);
+    width: 100px;
+    border: 2px solid #3498db;
+}
+
+.premium-brand-style5 {
+    font-size: 0.45rem;
+    color: #3498db;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.premium-compound-style5 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 2px;
+}
+
+.premium-strength-style5 {
+    font-size: 0.5rem;
+    color: #7f8c8d;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.premium-use-style5 {
+    font-size: 0.4rem;
+    color: #95a5a6;
+}
+
+/* NDC Number */
+.ndc-label-style5 {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    padding: 3px 6px;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    width: 85px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.ndc-text-style5 {
+    font-family: 'Courier New', monospace;
+    font-size: 0.35rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Glass Reflection */
+.glass-reflection-style5 {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.4) 30%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0.4) 70%,
+        rgba(255,255,255,0.8) 100%);
+    border-radius: 3px;
+    filter: blur(0.5px);
+}
+
+/* Hover Effects */
+.peptide-vial-style5:hover .vial-body-style5 {
+    box-shadow: 
+        inset 4px 0 8px rgba(255,255,255,0.95),
+        inset -4px 0 8px rgba(0,0,0,0.05),
+        inset 0 4px 8px rgba(255,255,255,0.9),
+        0 15px 40px rgba(0,0,0,0.2),
+        0 5px 15px rgba(52, 152, 219, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vial-container-style5 {
+        width: 110px;
+        height: 280px;
+    }
+    
+    .vial-body-style5 {
+        width: 110px;
+        height: 220px;
+    }
+    
+    .premium-label-style5 {
+        width: 85px;
+        padding: 6px 10px;
+    }
+}

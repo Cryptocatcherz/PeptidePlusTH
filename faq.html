@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - PeptidePlaza</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="faq-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <span class="trust-badge">Reliable research peptide source</span>
+                <div class="top-links">
+                    <a href="contact.html">Contact</a>
+                    <a href="reviews.html">Reviews</a>
+                    <a href="policy.html">Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-dna"></i>
+                    <div class="logo-text">
+                        <h1>PEPTIDE PLAZA <span id="country-code">TH</span></h1>
+                        <span>Premium Research Peptides</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#products" class="nav-link">Buy Peptides in <span id="country-name">Thailand</span> <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">Shop by Category</div>
+                            <a href="product-bpc157.html" class="dropdown-item">
+                                <i class="fas fa-dumbbell"></i>
+                                <div>
+                                    <strong>Muscle Growth & Recovery</strong>
+                                    <span>BPC-157, TB-500, IGF-1</span>
+                                </div>
+                            </a>
+                            <a href="product-semaglutide.html" class="dropdown-item">
+                                <i class="fas fa-weight"></i>
+                                <div>
+                                    <strong>Fat Loss & Metabolism</strong>
+                                    <span>Semaglutide, Tirzepatide</span>
+                                </div>
+                            </a>
+                            <a href="product-cjc1295.html" class="dropdown-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <div>
+                                    <strong>Anti-Aging & Wellness</strong>
+                                    <span>CJC-1295, Growth Hormone</span>
+                                </div>
+                            </a>
+                            <a href="index.html#products" class="dropdown-item view-all">
+                                <i class="fas fa-th"></i>
+                                <div>
+                                    <strong>View All Products</strong>
+                                    <span>Browse complete catalog</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="faq.html" class="nav-link active">Frequently Asked Questions</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FAQ Page -->
+    <section class="faq-page">
+        <div class="container">
+            <div class="faq-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our research peptides, ordering process, and shipping policies.</p>
+            </div>
+
+            <div class="faq-search">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search FAQ..." id="faqSearch">
+                </div>
+            </div>
+
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All Questions</button>
+                <button class="category-btn" data-category="ordering">Ordering</button>
+                <button class="category-btn" data-category="shipping">Shipping</button>
+                <button class="category-btn" data-category="products">Products</button>
+                <button class="category-btn" data-category="payment">Payment</button>
+                <button class="category-btn" data-category="research">Research Use</button>
+            </div>
+
+            <div class="faq-content">
+                <!-- Ordering Questions -->
+                <div class="faq-section" data-category="ordering">
+                    <h2><i class="fas fa-shopping-cart"></i> Ordering Process</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I place an order?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Placing an order is simple:</p>
+                            <ol>
+                                <li>Browse our product catalog and select your desired peptides</li>
+                                <li>Choose the quantity that suits your research needs</li>
+                                <li>Add items to your cart and proceed to checkout</li>
+                                <li>Fill in your shipping information and select payment method</li>
+                                <li>Complete payment and receive order confirmation</li>
+                            </ol>
+                            <p>We accept Bitcoin, Ethereum, and traditional payment methods for your convenience.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is the minimum order amount?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We don't have a minimum order requirement. You can order as little as one vial for your research needs. However, orders over $200 USD qualify for free standard shipping to most locations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I modify or cancel my order?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Orders can be modified or cancelled within 2 hours of placement, provided they haven't been processed for shipping. Contact our support team immediately at <strong>support@peptideplaza.com</strong> with your order number for assistance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Questions -->
+                <div class="faq-section" data-category="shipping">
+                    <h2><i class="fas fa-shipping-fast"></i> Shipping & Delivery</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Which countries do you ship to?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We currently ship to the following countries:</p>
+                            <div class="shipping-countries">
+                                <div class="country-group">
+                                    <h4>Asia-Pacific</h4>
+                                    <ul>
+                                        <li>🇹🇭 Thailand</li>
+                                        <li>🇸🇬 Singapore</li>
+                                        <li>🇲🇾 Malaysia</li>
+                                        <li>🇵🇭 Philippines</li>
+                                        <li>🇻🇳 Vietnam</li>
+                                        <li>🇮🇩 Indonesia</li>
+                                        <li>🇦🇺 Australia</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group">
+                                    <h4>North America</h4>
+                                    <ul>
+                                        <li>🇺🇸 United States</li>
+                                        <li>🇨🇦 Canada</li>
+                                    </ul>
+                                </div>
+                                <div class="country-group">
+                                    <h4>Europe</h4>
+                                    <ul>
+                                        <li>🇬🇧 United Kingdom</li>
+                                        <li>🇩🇪 Germany</li>
+                                        <li>🇫🇷 France</li>
+                                        <li>🇳🇱 Netherlands</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p><strong>Note:</strong> All products are shipped for research purposes only and must comply with local regulations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How long does shipping take?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="shipping-times">
+                                <div class="shipping-option">
+                                    <h4>🌏 Standard Shipping</h4>
+                                    <ul>
+                                        <li>Asia-Pacific: 5-10 business days</li>
+                                        <li>North America: 7-14 business days</li>
+                                        <li>Europe: 10-15 business days</li>
+                                        <li>Thailand: 2-3 business days</li>
+                                    </ul>
+                                </div>
+                                <div class="shipping-option">
+                                    <h4>🚀 Express Shipping</h4>
+                                    <ul>
+                                        <li>Asia-Pacific: 3-5 business days</li>
+                                        <li>North America: 5-7 business days</li>
+                                        <li>Europe: 7-10 business days</li>
+                                        <li>Thailand: 1-2 business days</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How are peptides packaged for shipping?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We take great care in packaging to ensure product integrity:</p>
+                            <ul>
+                                <li><strong>Temperature Control:</strong> All peptides are shipped with ice packs in insulated packaging</li>
+                                <li><strong>Discreet Packaging:</strong> No external branding or product identification</li>
+                                <li><strong>Secure Protection:</strong> Multiple layers of protective materials prevent damage</li>
+                                <li><strong>Documentation:</strong> Each package includes certificates of analysis and handling instructions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Questions -->
+                <div class="faq-section" data-category="products">
+                    <h2><i class="fas fa-flask"></i> Product Information</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What purity levels do your peptides have?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>All our peptides maintain high purity standards:</p>
+                            <ul>
+                                <li><strong>Standard Products:</strong> >98% purity (HPLC verified)</li>
+                                <li><strong>Premium Products:</strong> >99% purity (Mass spectrometry confirmed)</li>
+                                <li><strong>Quality Control:</strong> Each batch is tested by independent laboratories</li>
+                                <li><strong>Certificates:</strong> COA (Certificate of Analysis) provided with every order</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How should peptides be stored?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Proper storage is crucial for maintaining peptide integrity:</p>
+                            <div class="storage-info">
+                                <div class="storage-type">
+                                    <h4>Lyophilized (Powder) Form</h4>
+                                    <ul>
+                                        <li>Store at -20°C (freezer)</li>
+                                        <li>Keep in original vial</li>
+                                        <li>Protect from light and moisture</li>
+                                        <li>Stable for 2+ years when stored properly</li>
+                                    </ul>
+                                </div>
+                                <div class="storage-type">
+                                    <h4>Reconstituted (Liquid) Form</h4>
+                                    <ul>
+                                        <li>Store at 2-8°C (refrigerator)</li>
+                                        <li>Use within 30 days</li>
+                                        <li>Avoid freeze-thaw cycles</li>
+                                        <li>Keep sterile and protected from light</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you provide reconstitution instructions?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, detailed reconstitution guidelines are provided:</p>
+                            <ul>
+                                <li>Step-by-step instructions included with each order</li>
+                                <li>Recommended bacteriostatic water volumes</li>
+                                <li>Proper mixing techniques to avoid degradation</li>
+                                <li>Storage recommendations post-reconstitution</li>
+                                <li>Technical support available for questions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Questions -->
+                <div class="faq-section" data-category="payment">
+                    <h2><i class="fas fa-credit-card"></i> Payment Methods</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What payment methods do you accept?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer multiple secure payment options:</p>
+                            <div class="payment-methods-list">
+                                <div class="payment-category">
+                                    <h4>Cryptocurrency (Preferred)</h4>
+                                    <ul>
+                                        <li>₿ Bitcoin (BTC)</li>
+                                        <li>Ξ Ethereum (ETH)</li>
+                                        <li>Fast processing and enhanced privacy</li>
+                                    </ul>
+                                </div>
+                                <div class="payment-category">
+                                    <h4>Traditional Methods</h4>
+                                    <ul>
+                                        <li>Bank Transfer (SWIFT)</li>
+                                        <li>Credit/Debit Cards (Visa, Mastercard)</li>
+                                        <li>PayPal (Select regions)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is Bitcoin payment secure?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Bitcoin payments offer several advantages:</p>
+                            <ul>
+                                <li><strong>Enhanced Privacy:</strong> No personal financial information shared</li>
+                                <li><strong>Fast Processing:</strong> Payments confirmed within 1-6 confirmations</li>
+                                <li><strong>Lower Fees:</strong> Reduced transaction costs compared to traditional methods</li>
+                                <li><strong>Global Access:</strong> Available worldwide without banking restrictions</li>
+                                <li><strong>Secure:</strong> Blockchain technology ensures transaction integrity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Use Questions -->
+                <div class="faq-section" data-category="research">
+                    <h2><i class="fas fa-microscope"></i> Research Use</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are these products for human consumption?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="important-notice">
+                                <p><strong>IMPORTANT:</strong> All products sold by PeptidePlaza are strictly for research purposes only.</p>
+                                <ul>
+                                    <li>Not for human or animal consumption</li>
+                                    <li>Not for therapeutic or diagnostic use</li>
+                                    <li>Intended for qualified researchers and laboratories only</li>
+                                    <li>Must comply with local research regulations</li>
+                                    <li>Proper laboratory safety protocols required</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you provide research support?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer comprehensive research support:</p>
+                            <ul>
+                                <li><strong>Technical Documentation:</strong> Detailed product specifications and handling protocols</li>
+                                <li><strong>Expert Consultation:</strong> PhD-level scientists available for technical questions</li>
+                                <li><strong>Literature References:</strong> Relevant research papers and studies provided</li>
+                                <li><strong>Custom Solutions:</strong> Bulk orders and custom peptide synthesis available</li>
+                                <li><strong>Quality Assurance:</strong> Complete analytical data and certificates</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I get bulk pricing for large orders?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer attractive bulk pricing for research institutions:</p>
+                            <ul>
+                                <li><strong>Volume Discounts:</strong> Tiered pricing based on quantity</li>
+                                <li><strong>Institutional Rates:</strong> Special pricing for universities and research centers</li>
+                                <li><strong>Custom Quotes:</strong> Contact us for orders over 100 vials</li>
+                                <li><strong>Flexible Terms:</strong> Extended payment terms for qualified institutions</li>
+                            </ul>
+                            <p>Contact our sales team at <strong>sales@peptideplaza.com</strong> for a custom quote.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="faq-contact">
+                    <h2>Still Have Questions?</h2>
+                    <p>Our expert team is here to help with any additional questions about our research peptides.</p>
+                    
+                    <div class="contact-options">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Support</h4>
+                                <p>info@peptideplaza.com</p>
+                                <span>Response within 24 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <h4>Live Chat</h4>
+                                <p>Available on website</p>
+                                <span>Monday - Friday, 9 AM - 6 PM (UTC+7)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Support</h4>
+                                <p>+1 (555) 123-4567</p>
+                                <span>Technical questions only</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PeptidePlaza<span id="country-code-2">TH</span></h4>
+                    <p>Premium source for high-quality research peptides worldwide. All products are for research purposes only and meet the highest purity standards.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: <span id="support-email">support@peptideplaza.com</span></p>
+                    <p>Support: Available 24/7</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PeptidePlaza. All rights reserved. Research purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="location-detector.js"></script>
+    <script src="script.js"></script>
+    <script src="currency-converter.js"></script>
+    <script src="faq-script.js"></script>
+</body>
+</html>

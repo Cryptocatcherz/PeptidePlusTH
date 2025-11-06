@@ -1,0 +1,25 @@
+{
+  "name": "peptide-plaza",
+  "version": "1.0.0",
+  "description": "Peptide Plaza - Premium Research Peptides",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "keywords": [
+    "peptides",
+    "research",
+    "ecommerce",
+    "netlify"
+  ],
+  "author": "Peptide Plaza",
+  "license": "MIT"
+}

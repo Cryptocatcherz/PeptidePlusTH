@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vial Style Comparison - PeptidePlaza</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product-styles.css">
+    <link rel="stylesheet" href="vial-style-2.css">
+    <link rel="stylesheet" href="vial-style-3.css">
+    <link rel="stylesheet" href="vial-style-4.css">
+    <link rel="stylesheet" href="vial-style-5.css">
+    <link rel="stylesheet" href="vial-style-6.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .comparison-page {
+            padding: 60px 0;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .comparison-header h1 {
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .comparison-header p {
+            font-size: 1.2rem;
+            color: #636e72;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vial-comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .vial-style-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .vial-style-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #8B5A96;
+        }
+        
+        .style-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8B5A96;
+            margin-bottom: 10px;
+        }
+        
+        .style-subtitle {
+            font-size: 1rem;
+            color: #636e72;
+            margin-bottom: 30px;
+        }
+        
+        .vial-display {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .style-features {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .style-features h4 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .style-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .style-features li {
+            padding: 5px 0;
+            color: #636e72;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .style-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+        }
+        
+        .choose-btn {
+            background: linear-gradient(135deg, #8B5A96 0%, #6B4C93 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .choose-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 90, 150, 0.3);
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .back-link a {
+            color: #8B5A96;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .vial-comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
+            }
+            
+            .vial-display {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <span class="trust-badge">Reliable source in Thailand</span>
+                <div class="top-links">
+                    <a href="#contact">Contact</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#policy">Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-dna"></i>
+                    <div class="logo-text">
+                        <h1>PEPTIDE PLAZA TH</h1>
+                        <span>Premium Research Peptides</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#products" class="nav-link">Buy Peptides in <span id="country-name">Thailand</span> <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">Shop by Category</div>
+                            <a href="product-bpc157.html" class="dropdown-item">
+                                <i class="fas fa-dumbbell"></i>
+                                <div>
+                                    <strong>Muscle Growth & Recovery</strong>
+                                    <span>BPC-157, TB-500, IGF-1</span>
+                                </div>
+                            </a>
+                            <a href="product-semaglutide.html" class="dropdown-item">
+                                <i class="fas fa-weight"></i>
+                                <div>
+                                    <strong>Fat Loss & Metabolism</strong>
+                                    <span>Semaglutide, Tirzepatide</span>
+                                </div>
+                            </a>
+                            <a href="product-cjc1295.html" class="dropdown-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <div>
+                                    <strong>Anti-Aging & Wellness</strong>
+                                    <span>CJC-1295, Growth Hormone</span>
+                                </div>
+                            </a>
+                            <a href="index.html#products" class="dropdown-item view-all">
+                                <i class="fas fa-th"></i>
+                                <div>
+                                    <strong>View All Products</strong>
+                                    <span>Browse complete catalog</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="#faq" class="nav-link">Frequently Asked Questions</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Comparison Page -->
+    <section class="comparison-page">
+        <div class="container">
+            <div class="comparison-header">
+                <h1>Choose Your Preferred Vial Style</h1>
+                <p>Select the vial design that best represents your brand. Each style offers a professional pharmaceutical appearance with unique characteristics.</p>
+            </div>
+            
+            <div class="vial-comparison-grid">
+                <!-- Style 1: Classic Pharmaceutical -->
+                <div class="vial-style-card">
+                    <div class="style-title">Style 1</div>
+                    <div class="style-subtitle">Classic Pharmaceutical</div>
+                    
+                    <div class="vial-display">
+                        <div class="peptide-vial-large">
+                            <div class="vial-container-large">
+                                <div class="vial-body-large">
+                                    <div class="liquid-level"></div>
+                                    <div class="measurement-marks">
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                        <div class="measurement-mark"></div>
+                                    </div>
+                                </div>
+                                <div class="vial-cap-large">
+                                    <div class="crimp-seal"></div>
+                                </div>
+                                <div class="vial-label-large">
+                                    <div class="brand">PEPTIDE PLAZA TH</div>
+                                    <div class="compound">BPC-157</div>
+                                    <div class="details">
+                                        <div class="usage">5mg</div>
+                                        <div class="note">Research Use</div>
+                                    </div>
+                                </div>
+                                <div class="vial-bottom-label">
+                                    <div class="lot-info">LOT: PP240815</div>
+                                    <div class="exp-date">EXP: 08/2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Classic rounded pharmaceutical vial</li>
+                            <li>Aluminum flip-off cap with crimp seal</li>
+                            <li>Measurement marks on side</li>
+                            <li>Liquid level indicator</li>
+                            <li>Compact professional design</li>
+                            <li>Regulatory lot and expiration labels</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="choose-btn" onclick="selectStyle(1)">Choose Style 1</button>
+                </div>
+
+                <!-- Style 2: Laboratory Glass -->
+                <div class="vial-style-card">
+                    <div class="style-title">Style 2</div>
+                    <div class="style-subtitle">Laboratory Glass Vial</div>
+                    
+                    <div class="vial-display">
+                        <div class="peptide-vial-style2">
+                            <div class="vial-container-style2">
+                                <div class="vial-body-style2">
+                                    <div class="liquid-content-style2"></div>
+                                    <div class="vial-graduations">
+                                        <div class="graduation-line major"></div>
+                                        <div class="graduation-line minor"></div>
+                                        <div class="graduation-line minor"></div>
+                                        <div class="graduation-line major"></div>
+                                        <div class="graduation-line minor"></div>
+                                        <div class="graduation-line minor"></div>
+                                        <div class="graduation-line major"></div>
+                                    </div>
+                                    <div class="vial-reflection"></div>
+                                </div>
+                                <div class="vial-neck-style2"></div>
+                                <div class="vial-cap-style2">
+                                    <div class="cap-top"></div>
+                                    <div class="cap-ring"></div>
+                                </div>
+                                <div class="vial-label-style2">
+                                    <div class="label-header">PEPTIDE PLAZA TH</div>
+                                    <div class="label-compound">IGF-1 LR3</div>
+                                    <div class="label-strength">1mg/vial</div>
+                                    <div class="label-use">Research Use Only</div>
+                                </div>
+                                <div class="vial-barcode">
+                                    <div class="barcode-lines">
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar thick"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar thick"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar thick"></div>
+                                    </div>
+                                    <div class="barcode-text">LOT: IG240818</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Cylindrical laboratory glass design</li>
+                            <li>Screw cap with threading detail</li>
+                            <li>Volume graduations (1ml, 2ml, 3ml)</li>
+                            <li>Glass reflection effects</li>
+                            <li>Barcode identification system</li>
+                            <li>Scientific equipment appearance</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="choose-btn" onclick="selectStyle(2)">Choose Style 2</button>
+                </div>
+
+                <!-- Style 3: Pharmaceutical Grade -->
+                <div class="vial-style-card">
+                    <div class="style-title">Style 3</div>
+                    <div class="style-subtitle">Pharmaceutical Grade</div>
+                    
+                    <div class="vial-display">
+                        <div class="peptide-vial-style3">
+                            <div class="vial-container-style3">
+                                <div class="vial-shadow"></div>
+                                <div class="vial-body-style3">
+                                    <div class="vial-glass-effect"></div>
+                                    <div class="powder-content">
+                                        <div class="powder-particles">
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                            <div class="particle"></div>
+                                        </div>
+                                    </div>
+                                    <div class="volume-markings">
+                                        <div class="marking">1ml</div>
+                                        <div class="marking">2ml</div>
+                                        <div class="marking">3ml</div>
+                                    </div>
+                                </div>
+                                <div class="vial-stopper"></div>
+                                <div class="vial-seal-style3">
+                                    <div class="seal-pattern"></div>
+                                </div>
+                                <div class="vial-label-style3">
+                                    <div class="label-content">
+                                        <div class="brand-name">PEPTIDE PLAZA TH</div>
+                                        <div class="product-name">CJC-1295</div>
+                                        <div class="dosage-info">5mg</div>
+                                        <div class="research-only">Research Use</div>
+                                    </div>
+                                </div>
+                                <div class="regulatory-label">
+                                    <div class="reg-text">NDC: 12345-678-90</div>
+                                    <div class="reg-text">LOT: CJ240819</div>
+                                    <div class="reg-text">EXP: 08/2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Pharmaceutical grade with rubber stopper</li>
+                            <li>Aluminum seal with crimp pattern</li>
+                            <li>Lyophilized powder with particles</li>
+                            <li>Volume markings and glass effects</li>
+                            <li>NDC regulatory compliance</li>
+                            <li>Most authentic medical appearance</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="choose-btn" onclick="selectStyle(3)">Choose Style 3</button>
+                </div>
+
+                <!-- Style 4: Modern Ampule -->
+                <div class="vial-style-card">
+                    <div class="style-title">Style 4</div>
+                    <div class="style-subtitle">Modern Ampule Design</div>
+                    
+                    <div class="vial-display">
+                        <div class="peptide-vial-style4">
+                            <div class="vial-container-style4">
+                                <div class="vial-body-style4">
+                                    <div class="liquid-ampule-style4"></div>
+                                    <div class="ampule-highlight-style4"></div>
+                                </div>
+                                <div class="ampule-neck-style4"></div>
+                                <div class="ampule-tip-style4"></div>
+                                <div class="ampule-label-style4">
+                                    <div class="ampule-brand-style4">PEPTIDE PLAZA TH</div>
+                                    <div class="ampule-compound-style4">AMPULE</div>
+                                    <div class="ampule-dose-style4">5mg</div>
+                                </div>
+                                <div class="qr-code-style4">
+                                    <div class="qr-pattern"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Sleek modern ampule design</li>
+                            <li>Tapered neck with sealed tip</li>
+                            <li>Rotating label for space efficiency</li>
+                            <li>QR code for digital tracking</li>
+                            <li>Liquid sway animation effects</li>
+                            <li>Contemporary pharmaceutical look</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="choose-btn" onclick="selectStyle(4)">Choose Style 4</button>
+                </div>
+
+                <!-- Style 5: Premium Injection Vial -->
+                <div class="vial-style-card">
+                    <div class="style-title">Style 5</div>
+                    <div class="style-subtitle">Premium Injection Vial</div>
+                    
+                    <div class="vial-display">
+                        <div class="peptide-vial-style5">
+                            <div class="vial-container-style5">
+                                <div class="vial-body-style5">
+                                    <div class="liquid-multidose-style5"></div>
+                                    <div class="glass-reflection-style5"></div>
+                                    <div class="volume-scale-style5">
+                                        <div class="scale-mark-style5">
+                                            <div class="scale-line-style5"></div>
+                                            <div class="scale-text-style5">2ml</div>
+                                        </div>
+                                        <div class="scale-mark-style5">
+                                            <div class="scale-line-style5"></div>
+                                            <div class="scale-text-style5">1ml</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vial-neck-style5"></div>
+                                <div class="rubber-stopper-style5">
+                                    <div class="stopper-center-style5"></div>
+                                </div>
+                                <div class="flip-cap-style5">
+                                    <div class="cap-text-style5">FLIP OFF</div>
+                                </div>
+                                <div class="injection-port-style5"></div>
+                                <div class="premium-label-style5">
+                                    <div class="premium-brand-style5">PEPTIDE PLAZA TH</div>
+                                    <div class="premium-compound-style5">PREMIUM</div>
+                                    <div class="premium-strength-style5">Multi-dose</div>
+                                    <div class="premium-use-style5">Research Use</div>
+                                </div>
+                                <div class="ndc-label-style5">
+                                    <div class="ndc-text-style5">NDC: 12345-678-90</div>
+                                    <div class="ndc-text-style5">LOT: PR240820</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Multi-dose injection vial design</li>
+                            <li>Blue flip-off cap with text</li>
+                            <li>Injection port marking</li>
+                            <li>Volume scale measurements</li>
+                            <li>Premium white label design</li>
+                            <li>Professional medical appearance</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="choose-btn" onclick="selectStyle(5)">Choose Style 5</button>
+                </div>
+
+                <!-- Style 6: Futuristic Bio-Tech -->
+                <div class="vial-style-card">
+                    <div class="style-title">Style 6</div>
+                    <div class="style-subtitle">Futuristic Bio-Tech</div>
+                    
+                    <div class="vial-display">
+                        <div class="peptide-vial-style6">
+                            <div class="vial-container-style6">
+                                <div class="vial-body-style6">
+                                    <div class="holographic-overlay-style6"></div>
+                                    <div class="nano-liquid-style6">
+                                        <div class="nano-particles-style6">
+                                            <div class="nano-particle"></div>
+                                            <div class="nano-particle"></div>
+                                            <div class="nano-particle"></div>
+                                            <div class="nano-particle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="digital-cap-style6">
+                                    <div class="led-indicator-style6"></div>
+                                    <div class="digital-display-style6">READY</div>
+                                </div>
+                                <div class="biotech-label-style6">
+                                    <div class="biotech-brand-style6">PEPTIDE PLAZA TH</div>
+                                    <div class="biotech-compound-style6">BIO-TECH</div>
+                                    <div class="biotech-dose-style6">Nano-grade</div>
+                                    <div class="biotech-use-style6">Research Use</div>
+                                </div>
+                                <div class="molecular-overlay-style6">
+                                    <div class="molecule-node-style6"></div>
+                                    <div class="molecule-node-style6"></div>
+                                    <div class="molecule-node-style6"></div>
+                                    <div class="molecule-node-style6"></div>
+                                    <div class="molecule-bond-style6 bond1"></div>
+                                    <div class="molecule-bond-style6 bond2"></div>
+                                    <div class="molecule-bond-style6 bond3"></div>
+                                    <div class="molecule-bond-style6 bond4"></div>
+                                </div>
+                                <div class="data-matrix-style6">
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                    <div class="matrix-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="style-features">
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>Futuristic bio-tech design</li>
+                            <li>LED indicator and digital display</li>
+                            <li>Holographic overlay effects</li>
+                            <li>Nano-particle animations</li>
+                            <li>Molecular structure overlay</li>
+                            <li>Data matrix identification code</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="choose-btn" onclick="selectStyle(6)">Choose Style 6</button>
+                </div>
+            </div>
+            
+            <div class="back-link">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PeptidePlaza</h4>
+                    <p>Thailand's premier source for research peptides. All products are for research purposes only.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@peptideplaza.com</p>
+                    <p>Support: Available 24/7</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PeptidePlaza. All rights reserved. Research purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function selectStyle(styleNumber) {
+            const styles = {
+                1: "Classic Pharmaceutical",
+                2: "Laboratory Glass Vial", 
+                3: "Pharmaceutical Grade",
+                4: "Modern Ampule Design",
+                5: "Premium Injection Vial",
+                6: "Futuristic Bio-Tech"
+            };
+            
+            const message = `You selected Style ${styleNumber}: ${styles[styleNumber]}\n\nThis style will be applied to all product pages. The design features:\n\n`;
+            
+            let features = "";
+            if (styleNumber === 1) {
+                features = "• Classic rounded pharmaceutical vial\n• Aluminum flip-off cap with crimp seal\n• Measurement marks and liquid indicators\n• Compact professional design";
+            } else if (styleNumber === 2) {
+                features = "• Cylindrical laboratory glass design\n• Screw cap with threading\n• Volume graduations and barcode\n• Scientific equipment appearance";
+            } else if (styleNumber === 3) {
+                features = "• Pharmaceutical grade with rubber stopper\n• Aluminum seal with crimp pattern\n• Lyophilized powder effects\n• Most authentic medical appearance";
+            } else if (styleNumber === 4) {
+                features = "• Sleek modern ampule design\n• Tapered neck with sealed tip\n• Rotating label and QR code\n• Contemporary pharmaceutical look";
+            } else if (styleNumber === 5) {
+                features = "• Multi-dose injection vial design\n• Blue flip-off cap with injection port\n• Volume scale measurements\n• Professional medical appearance";
+            } else {
+                features = "• Futuristic bio-tech design\n• LED indicator and digital display\n• Holographic and nano-particle effects\n• Advanced molecular visualization";
+            }
+            
+            alert(message + features + "\n\nWould you like to proceed with this style?");
+        }
+        
+        // Initialize cart system
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple cart initialization for this page
+            const cartCount = document.querySelector('.cart-count');
+            const savedCart = JSON.parse(localStorage.getItem('peptideCart') || '[]');
+            if (cartCount) {
+                cartCount.textContent = savedCart.length;
+            }
+        });
+    </script>
+    
+    <script src="location-detector.js"></script>
+    <script src="script.js"></script>
+    <script src="currency-converter.js"></script>
+</body>
+</html>

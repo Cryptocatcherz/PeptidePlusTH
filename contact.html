@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PeptidePlaza</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="faq-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <span class="trust-badge">Reliable research peptide source</span>
+                <div class="top-links">
+                    <a href="contact.html">Contact</a>
+                    <a href="reviews.html">Reviews</a>
+                    <a href="policy.html">Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-dna"></i>
+                    <div class="logo-text">
+                        <h1>PEPTIDE PLAZA <span id="country-code">TH</span></h1>
+                        <span>Premium Research Peptides</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#products" class="nav-link">Buy Peptides in <span id="country-name">Thailand</span> <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">Shop by Category</div>
+                            <a href="product-bpc157.html" class="dropdown-item">
+                                <i class="fas fa-dumbbell"></i>
+                                <div>
+                                    <strong>Muscle Growth & Recovery</strong>
+                                    <span>BPC-157, TB-500, IGF-1</span>
+                                </div>
+                            </a>
+                            <a href="product-semaglutide.html" class="dropdown-item">
+                                <i class="fas fa-weight"></i>
+                                <div>
+                                    <strong>Fat Loss & Metabolism</strong>
+                                    <span>Semaglutide, Tirzepatide</span>
+                                </div>
+                            </a> 
+                           <a href="product-cjc1295.html" class="dropdown-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <div>
+                                    <strong>Anti-Aging & Wellness</strong>
+                                    <span>CJC-1295, Growth Hormone</span>
+                                </div>
+                            </a>
+                            <a href="index.html#products" class="dropdown-item view-all">
+                                <i class="fas fa-th"></i>
+                                <div>
+                                    <strong>View All Products</strong>
+                                    <span>Browse complete catalog</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="faq.html" class="nav-link">Frequently Asked Questions</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Page -->
+    <section class="faq-page">
+        <div class="container">
+            <div class="faq-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for support, questions, or bulk orders. We're here to help with your research needs.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-form-section">
+                    <h2>Send us a Message</h2>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="order">Order Support</option>
+                                <option value="technical">Technical Questions</option>
+                                <option value="bulk">Bulk Orders</option>
+                                <option value="shipping">Shipping Questions</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Please describe your inquiry in detail..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section">
+                    <h2>Get in Touch</h2>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Support</h4>
+                                <p><span id="support-email">support@peptideplaza.com</span></p>
+                                <span>Response within 24 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-comments"></i>
+                            <div>
+                                <h4>Live Chat</h4>
+                                <p>Available on website</p>
+                                <span>Monday - Friday, 9 AM - 6 PM (UTC+7)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Support</h4>
+                                <p>+1 (555) 123-4567</p>
+                                <span>Technical questions only</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div>
+                                <h4>Bulk Orders</h4>
+                                <p>sales@peptideplaza.com</p>
+                                <span>Custom quotes available</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h3>Business Hours</h3>
+                        <ul>
+                            <li><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</li>
+                            <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM</li>
+                            <li><strong>Sunday:</strong> Closed</li>
+                        </ul>
+                        <p><small>All times in UTC+7 timezone</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PeptidePlaza<span id="country-code-2">TH</span></h4>
+                    <p>Premium source for high-quality research peptides worldwide. All products are for research purposes only and meet the highest purity standards.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: <span id="support-email-2">support@peptideplaza.com</span></p>
+                    <p>Support: Available 24/7</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PeptidePlaza<span id="country-code-3">TH</span>. All rights reserved. Research purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="location-detector.js"></script>
+    <script src="script.js"></script>
+    <script src="currency-converter.js"></script>
+    <script src="faq-script.js"></script>
+</body>
+</html>

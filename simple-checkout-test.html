@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Checkout Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .cart-item { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .debug { background: #f0f0f0; padding: 15px; margin: 10px 0; }
+        button { padding: 10px 20px; margin: 10px; background: #8B5A96; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Simple Checkout Test</h1>
+    
+    <div class="debug">
+        <h3>Raw localStorage Data:</h3>
+        <div id="rawData">Loading...</div>
+    </div>
+    
+    <div class="debug">
+        <h3>Parsed Cart Items:</h3>
+        <div id="cartItems">Loading...</div>
+    </div>
+    
+    <div class="debug">
+        <h3>Calculated Total:</h3>
+        <div id="calculatedTotal">Loading...</div>
+    </div>
+    
+    <button onclick="loadCart()">Load Cart</button>
+    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="addTestItem()">Add Test Item</button>
+
+    <script>
+        function loadCart() {
+            console.log('Loading cart...');
+            
+            // Show raw data
+            const rawData = localStorage.getItem('peptideCart');
+            document.getElementById('rawData').innerHTML = rawData || 'No data';
+            
+            // Parse and show items
+            try {
+                const cart = JSON.parse(rawData || '[]');
+                console.log('Parsed cart:', cart);
+                
+                let itemsHtml = '';
+                let total = 0;
+                
+                cart.forEach((item, index) => {
+                    console.log(`Item ${index}:`, item);
+                    
+                    itemsHtml += `
+                        <div class="cart-item">
+                            <strong>Name:</strong> ${item.name}<br>
+                            <strong>Price:</strong> ${item.price}<br>
+                            <strong>Quantity:</strong> ${item.quantity || 1}<br>
+                            <strong>Unit Price:</strong> ${item.unitPrice || 'N/A'}
+                        </div>
+                    `;
+                    
+                    // Calculate total
+                    let itemPrice = 0;
+                    if (item.unitPrice) {
+                        itemPrice = item.unitPrice * (item.quantity || 1);
+                    } else {
+                        // Try to parse from price string
+                        const priceStr = item.price.replace(/[฿,$]/g, '');
+                        itemPrice = parseInt(priceStr) || 0;
+                    }
+                    
+                    console.log(`Item ${index} price: ${itemPrice}`);
+                    total += itemPrice;
+                });
+                
+                document.getElementById('cartItems').innerHTML = itemsHtml || 'No items';
+                document.getElementById('calculatedTotal').innerHTML = `฿${total.toLocaleString()}`;
+                
+                console.log('Total calculated:', total);
+                
+            } catch (error) {
+                console.error('Error parsing cart:', error);
+                document.getElementById('cartItems').innerHTML = 'Error parsing cart: ' + error.message;
+            }
+        }
+        
+        function clearCart() {
+            localStorage.removeItem('peptideCart');
+            loadCart();
+        }
+        
+        function addTestItem() {
+            const cart = JSON.parse(localStorage.getItem('peptideCart') || '[]');
+            cart.push({
+                name: 'Test Item - ' + Date.now(),
+                price: '฿500',
+                quantity: 1,
+                unitPrice: 500,
+                id: Date.now()
+            });
+            localStorage.setItem('peptideCart', JSON.stringify(cart));
+            loadCart();
+        }
+        
+        // Load cart on page load
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>

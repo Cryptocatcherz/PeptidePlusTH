@@ -1,0 +1,197 @@
+/* Vial Style 4 - Modern Ampule Design */
+
+.peptide-vial-style4 {
+    display: inline-block;
+    position: relative;
+}
+
+.vial-container-style4 {
+    width: 100px;
+    height: 350px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Ampule Body - Sleek Modern Design */
+.vial-body-style4 {
+    width: 100px;
+    height: 280px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.99) 0%, 
+        rgba(248,250,252,0.97) 25%,
+        rgba(255,255,255,0.99) 50%,
+        rgba(245,248,250,0.96) 75%,
+        rgba(255,255,255,0.99) 100%);
+    border-radius: 50px 50px 8px 8px;
+    border: 2px solid rgba(180, 190, 200, 0.8);
+    position: relative;
+    box-shadow: 
+        inset 3px 0 6px rgba(255,255,255,0.95),
+        inset -3px 0 6px rgba(0,0,0,0.04),
+        0 8px 25px rgba(0,0,0,0.12),
+        0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Ampule Neck */
+.ampule-neck-style4 {
+    width: 30px;
+    height: 60px;
+    background: linear-gradient(180deg, 
+        rgba(240,245,248,0.98) 0%, 
+        rgba(230,235,240,0.95) 100%);
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgba(180, 190, 200, 0.8);
+    border-bottom: none;
+    box-shadow: 
+        inset 1px 0 2px rgba(255,255,255,0.9),
+        inset -1px 0 2px rgba(0,0,0,0.05);
+}
+
+/* Ampule Tip */
+.ampule-tip-style4 {
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(180deg, 
+        rgba(235,240,245,0.98) 0%, 
+        rgba(220,225,230,0.95) 100%);
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgba(180, 190, 200, 0.8);
+    border-bottom: none;
+    box-shadow: 
+        0 2px 6px rgba(0,0,0,0.15),
+        inset 0 1px 2px rgba(255,255,255,0.9);
+}
+
+/* Liquid Content */
+.liquid-ampule-style4 {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(180deg, 
+        rgba(139, 90, 150, 0.15) 0%, 
+        rgba(139, 90, 150, 0.25) 50%, 
+        rgba(139, 90, 150, 0.35) 100%);
+    border-radius: 40px 40px 4px 4px;
+    animation: liquidSway 5s ease-in-out infinite;
+}
+
+@keyframes liquidSway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(1deg); }
+    75% { transform: translateX(-50%) rotate(-1deg); }
+}
+
+/* Modern Label Design */
+.ampule-label-style4 {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    width: 80px;
+    font-size: 0.6rem;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.ampule-brand-style4 {
+    font-size: 0.4rem;
+    opacity: 0.9;
+    margin-bottom: 1px;
+}
+
+.ampule-compound-style4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 1px;
+}
+
+.ampule-dose-style4 {
+    font-size: 0.45rem;
+    opacity: 0.8;
+}
+
+/* QR Code */
+.qr-code-style4 {
+    position: absolute;
+    bottom: 20px;
+    right: -25px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.3rem;
+    color: #333;
+}
+
+.qr-pattern {
+    width: 16px;
+    height: 16px;
+    background: 
+        linear-gradient(90deg, #333 0px, #333 2px, transparent 2px, transparent 4px),
+        linear-gradient(0deg, #333 0px, #333 2px, transparent 2px, transparent 4px);
+    background-size: 4px 4px;
+}
+
+/* Glass Highlight */
+.ampule-highlight-style4 {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 4px;
+    height: 200px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.8) 0%, 
+        rgba(255,255,255,0.3) 50%,
+        rgba(255,255,255,0.6) 100%);
+    border-radius: 2px;
+    filter: blur(0.5px);
+}
+
+/* Hover Effects */
+.peptide-vial-style4:hover .vial-body-style4 {
+    box-shadow: 
+        inset 3px 0 6px rgba(255,255,255,0.95),
+        inset -3px 0 6px rgba(0,0,0,0.04),
+        0 12px 35px rgba(0,0,0,0.18),
+        0 4px 12px rgba(102, 126, 234, 0.15);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vial-container-style4 {
+        width: 80px;
+        height: 280px;
+    }
+    
+    .vial-body-style4 {
+        width: 80px;
+        height: 220px;
+    }
+    
+    .ampule-label-style4 {
+        width: 60px;
+        padding: 3px 8px;
+    }
+}

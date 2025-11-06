@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { margin: 10px; padding: 10px 20px; background: #8B5A96; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .cart-info { background: #f0f0f0; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Cart Debug Test</h1>
+    
+    <div class="cart-info">
+        <h3>Current Cart Status</h3>
+        <div id="cartStatus">Loading...</div>
+    </div>
+    
+    <button onclick="addTestItem()">Add Test Item</button>
+    <button onclick="showCart()">Show Cart</button>
+    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="goToCheckout()">Go to Checkout</button>
+    
+    <div class="cart-info">
+        <h3>Console Output</h3>
+        <div id="console" style="font-family: monospace; font-size: 12px; max-height: 300px; overflow-y: auto;"></div>
+    </div>
+
+    <script>
+        // Override console.log to show in page
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const consoleDiv = document.getElementById('console');
+            if (consoleDiv) {
+                consoleDiv.innerHTML += args.join(' ') + '<br>';
+                consoleDiv.scrollTop = consoleDiv.scrollHeight;
+            }
+        };
+
+        function updateCartStatus() {
+            const cart = JSON.parse(localStorage.getItem('peptideCart') || '[]');
+            const statusDiv = document.getElementById('cartStatus');
+            statusDiv.innerHTML = `
+                <strong>Items in cart:</strong> ${cart.length}<br>
+                <strong>Raw localStorage:</strong> ${localStorage.getItem('peptideCart')}<br>
+                <strong>Parsed cart:</strong> ${JSON.stringify(cart, null, 2)}
+            `;
+        }
+
+        function addTestItem() {
+            const testItem = {
+                name: 'Test Product - ' + Date.now(),
+                price: '฿1000',
+                quantity: 1,
+                id: Date.now()
+            };
+            
+            let cart = JSON.parse(localStorage.getItem('peptideCart') || '[]');
+            cart.push(testItem);
+            localStorage.setItem('peptideCart', JSON.stringify(cart));
+            
+            console.log('Added test item:', testItem);
+            updateCartStatus();
+        }
+
+        function showCart() {
+            const cart = JSON.parse(localStorage.getItem('peptideCart') || '[]');
+            console.log('Current cart:', cart);
+            updateCartStatus();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('peptideCart');
+            console.log('Cart cleared');
+            updateCartStatus();
+        }
+
+        function goToCheckout() {
+            console.log('Navigating to checkout...');
+            window.location.href = 'checkout.html';
+        }
+
+        // Update status on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartStatus();
+            console.log('Cart test page loaded');
+        });
+
+        // Monitor localStorage changes
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'peptideCart') {
+                console.log('localStorage changed:', e.newValue);
+                updateCartStatus();
+            }
+        });
+    </script>
+</body>
+</html>

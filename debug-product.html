@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { padding: 10px 20px; margin: 10px; background: #8B5A96; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .debug { background: #f0f0f0; padding: 15px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Product Debug Test</h1>
+    
+    <div class="debug">
+        <h3>Test Elements:</h3>
+        <div class="product-info">
+            <h1>BPC-157 5mg</h1>
+        </div>
+        <button class="add-to-cart-btn">Add to Cart (Test)</button>
+    </div>
+    
+    <div class="debug">
+        <h3>Debug Info:</h3>
+        <div id="debugInfo">Loading...</div>
+    </div>
+    
+    <button onclick="testCartSystem()">Test Cart System</button>
+    <button onclick="testAddToCart()">Test Add to Cart</button>
+
+    <script src="cart-system.js"></script>
+    <script src="product-page.js"></script>
+    
+    <script>
+        function updateDebugInfo() {
+            const info = document.getElementById('debugInfo');
+            info.innerHTML = `
+                <strong>Cart System Available:</strong> ${!!window.cartSystem}<br>
+                <strong>Product Info Element:</strong> ${!!document.querySelector('.product-info')}<br>
+                <strong>Add to Cart Button:</strong> ${!!document.querySelector('.add-to-cart-btn')}<br>
+                <strong>Cart Items Count:</strong> ${window.cartSystem ? window.cartSystem.getItemCount() : 'N/A'}
+            `;
+        }
+        
+        function testCartSystem() {
+            console.log('Testing cart system...');
+            if (window.cartSystem) {
+                const testItem = {
+                    id: Date.now(),
+                    name: 'Test Product',
+                    price: '฿1000',
+                    quantity: 1,
+                    unitPrice: 1000
+                };
+                
+                window.cartSystem.addItem(testItem);
+                console.log('Test item added');
+                updateDebugInfo();
+            } else {
+                console.error('Cart system not available');
+            }
+        }
+        
+        function testAddToCart() {
+            console.log('Testing add to cart button...');
+            const btn = document.querySelector('.add-to-cart-btn');
+            if (btn) {
+                btn.click();
+                console.log('Button clicked');
+            } else {
+                console.error('Button not found');
+            }
+        }
+        
+        // Update debug info every second
+        setInterval(updateDebugInfo, 1000);
+        
+        // Initial update
+        setTimeout(updateDebugInfo, 100);
+    </script>
+</body>
+</html>

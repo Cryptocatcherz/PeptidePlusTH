@@ -1,0 +1,304 @@
+/* Vial Style 2 - Laboratory Glass Vial with Graduations */
+
+.peptide-vial-style2 {
+    display: inline-block;
+    position: relative;
+}
+
+.vial-container-style2 {
+    width: 140px;
+    height: 350px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Main Vial Body - Cylindrical Lab Vial */
+.vial-body-style2 {
+    width: 140px;
+    height: 280px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.98) 0%, 
+        rgba(250,250,250,0.96) 25%,
+        rgba(255,255,255,0.98) 50%,
+        rgba(248,248,248,0.95) 75%,
+        rgba(255,255,255,0.98) 100%);
+    border-radius: 8px 8px 8px 8px;
+    border: 2px solid rgba(180, 180, 180, 0.6);
+    position: relative;
+    box-shadow: 
+        inset 4px 0 8px rgba(255,255,255,0.9),
+        inset -4px 0 8px rgba(0,0,0,0.06),
+        inset 0 4px 8px rgba(255,255,255,0.8),
+        0 10px 30px rgba(0,0,0,0.15),
+        0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Liquid Content Inside Vial */
+.liquid-content-style2 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 15px;
+    background: linear-gradient(90deg, 
+        rgba(139, 90, 150, 0.4) 0%, 
+        rgba(139, 90, 150, 0.6) 50%, 
+        rgba(139, 90, 150, 0.4) 100%);
+    border-radius: 6px;
+    animation: liquidGlow 4s ease-in-out infinite;
+}
+
+@keyframes liquidGlow {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scaleY(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scaleY(1.1); }
+}
+
+/* Graduation Marks */
+.vial-graduations {
+    position: absolute;
+    left: 8px;
+    top: 40px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.graduation-line {
+    height: 1px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 1px;
+}
+
+.graduation-line.major {
+    width: 15px;
+    background: rgba(0,0,0,0.4);
+    height: 2px;
+}
+
+.graduation-line.minor {
+    width: 10px;
+    background: rgba(0,0,0,0.25);
+}
+
+/* Glass Reflection Effect */
+.vial-reflection {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.4) 30%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0.4) 70%,
+        rgba(255,255,255,0.8) 100%);
+    border-radius: 3px;
+    filter: blur(1px);
+}
+
+/* Vial Neck */
+.vial-neck-style2 {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(180deg, 
+        rgba(240,240,240,0.95) 0%, 
+        rgba(220,220,220,0.9) 100%);
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgba(180, 180, 180, 0.6);
+    border-bottom: none;
+    box-shadow: 
+        inset 2px 0 4px rgba(255,255,255,0.8),
+        inset -2px 0 4px rgba(0,0,0,0.1),
+        0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Screw Cap Style */
+.vial-cap-style2 {
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cap-top {
+    width: 70px;
+    height: 35px;
+    background: linear-gradient(180deg, 
+        #f0f0f0 0%, 
+        #d8d8d8 30%, 
+        #c0c0c0 70%, 
+        #b0b0b0 100%);
+    border-radius: 35px 35px 8px 8px;
+    border: 2px solid #a0a0a0;
+    box-shadow: 
+        0 4px 10px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.8),
+        inset 0 -2px 4px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.cap-top::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 20px;
+    background: linear-gradient(180deg, 
+        rgba(255,255,255,0.8) 0%, 
+        rgba(255,255,255,0.3) 100%);
+    border-radius: 25px;
+}
+
+.cap-ring {
+    width: 65px;
+    height: 15px;
+    background: repeating-linear-gradient(
+        90deg,
+        #a0a0a0 0px,
+        #a0a0a0 2px,
+        #c0c0c0 2px,
+        #c0c0c0 4px
+    );
+    border-radius: 0 0 4px 4px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Professional Label Style */
+.vial-label-style2 {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #8B5A96 0%, #6B4C93 100%);
+    color: white;
+    padding: 8px 10px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 
+        0 3px 8px rgba(0,0,0,0.3),
+        inset 0 1px 2px rgba(255,255,255,0.3);
+    width: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.label-header {
+    font-size: 0.45rem;
+    opacity: 0.9;
+    margin-bottom: 2px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+.label-compound {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.label-strength {
+    font-size: 0.5rem;
+    opacity: 0.9;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.label-use {
+    font-size: 0.4rem;
+    opacity: 0.8;
+}
+
+/* Barcode Label */
+.vial-barcode {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 4px 6px;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 85px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.barcode-lines {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    margin-bottom: 2px;
+    height: 8px;
+    align-items: end;
+}
+
+.bar {
+    width: 1px;
+    height: 6px;
+    background: #333;
+}
+
+.bar.thick {
+    width: 2px;
+    height: 8px;
+}
+
+.barcode-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.35rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Hover Effects */
+.peptide-vial-style2:hover .vial-body-style2 {
+    box-shadow: 
+        inset 4px 0 8px rgba(255,255,255,0.9),
+        inset -4px 0 8px rgba(0,0,0,0.06),
+        inset 0 4px 8px rgba(255,255,255,0.8),
+        0 15px 40px rgba(0,0,0,0.2),
+        0 5px 15px rgba(139, 90, 150, 0.1);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.peptide-vial-style2:hover .liquid-content-style2 {
+    animation-duration: 2s;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .vial-container-style2 {
+        width: 120px;
+        height: 300px;
+    }
+    
+    .vial-body-style2 {
+        width: 120px;
+        height: 240px;
+    }
+    
+    .vial-label-style2 {
+        width: 85px;
+        padding: 6px 8px;
+    }
+    
+    .label-compound {
+        font-size: 0.7rem;
+    }
+}

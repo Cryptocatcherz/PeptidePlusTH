@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cart Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { padding: 10px 20px; margin: 10px; background: #8B5A96; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .cart-btn { background: #007bff; }
+        .debug { background: #f0f0f0; padding: 15px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Simple Cart Test</h1>
+    
+    <div class="debug">
+        <h3>Test Product:</h3>
+        <div class="product-info">
+            <h1>BPC-157 5mg</h1>
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+    
+    <div class="debug">
+        <h3>Cart Info:</h3>
+        <p>Cart Count: <span class="cart-count">0</span></p>
+        <button class="cart-btn">View Cart</button>
+        <button onclick="window.simpleCart.clear()">Clear Cart</button>
+    </div>
+    
+    <div class="debug">
+        <h3>Manual Tests:</h3>
+        <button onclick="testAdd()">Manual Add Item</button>
+        <button onclick="showDebug()">Show Debug Info</button>
+    </div>
+    
+    <div id="debug-output"></div>
+
+    <script src="simple-cart.js"></script>
+    
+    <script>
+        function testAdd() {
+            console.log('Manual test add...');
+            window.simpleCart.addItem('Test Product', '฿500', 1);
+        }
+        
+        function showDebug() {
+            const output = document.getElementById('debug-output');
+            output.innerHTML = `
+                <h4>Debug Info:</h4>
+                <p><strong>Simple Cart Available:</strong> ${!!window.simpleCart}</p>
+                <p><strong>Cart Items:</strong> ${window.simpleCart ? window.simpleCart.items.length : 'N/A'}</p>
+                <p><strong>Cart Items:</strong> ${window.simpleCart ? JSON.stringify(window.simpleCart.items, null, 2) : 'N/A'}</p>
+            `;
+        }
+        
+        // Auto-update debug info
+        setInterval(showDebug, 2000);
+    </script>
+</body>
+</html>

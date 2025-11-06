@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - PeptidePlaza Thailand | Bitcoin & Ethereum Payment</title>
+    <meta name="description" content="Complete your peptide order securely. Fast checkout with Bitcoin or Ethereum. Free delivery in Thailand on orders over ฿3000.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="canonical" href="https://peptideplaza.com/checkout.html">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkout-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <span class="trust-badge">Reliable source in Thailand</span>
+                <div class="top-links">
+                    <a href="#contact">Contact</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#policy">Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-dna"></i>
+                    <div class="logo-text">
+                        <h1>PEPTIDE PLAZA TH</h1>
+                        <span>Premium Research Peptides</span>
+                    </div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#products" class="nav-link">Buy Peptides in Thailand <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">Shop by Category</div>
+                            <a href="product-bpc157.html" class="dropdown-item">
+                                <i class="fas fa-dumbbell"></i>
+                                <div>
+                                    <strong>Muscle Growth & Recovery</strong>
+                                    <span>BPC-157, TB-500, IGF-1</span>
+                                </div>
+                            </a>
+                            <a href="product-semaglutide.html" class="dropdown-item">
+                                <i class="fas fa-weight"></i>
+                                <div>
+                                    <strong>Fat Loss & Metabolism</strong>
+                                    <span>Semaglutide, Tirzepatide</span>
+                                </div>
+                            </a>
+                            <a href="product-cjc1295.html" class="dropdown-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <div>
+                                    <strong>Anti-Aging & Wellness</strong>
+                                    <span>CJC-1295, Growth Hormone</span>
+                                </div>
+                            </a>
+                            <a href="index.html#products" class="dropdown-item view-all">
+                                <i class="fas fa-th"></i>
+                                <div>
+                                    <strong>View All Products</strong>
+                                    <span>Browse complete catalog</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="#faq" class="nav-link">Frequently Asked Questions</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Delivery Banner -->
+    <div class="delivery-banner">
+        <i class="fas fa-shipping-fast"></i>
+        Order today and receive by <span class="delivery-date" id="deliveryDate">Loading...</span>
+    </div>
+
+    <!-- Checkout Page -->
+    <section class="checkout-page">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="checkout-progress">
+                <div class="progress-steps">
+                    <div class="progress-line" style="width: 0%"></div>
+                    <div class="progress-step active">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Cart</div>
+                    </div>
+                    <div class="progress-step active">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Details</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Complete</div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="page-title">Checkout</h1>
+
+            <div class="checkout-layout">
+                <!-- Billing Details -->
+                <div class="billing-section">
+                    <h2>Billing details</h2>
+                    
+                    <form class="billing-form" id="checkoutForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country / Region <span class="required">*</span></label>
+                            <select id="country" name="country" required>
+                                <option value="">Select a country / region...</option>
+                                <option value="TH" selected>Thailand</option>
+                                <option value="US">United States</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                                <option value="CA">Canada</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Street address <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" placeholder="House number and street name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">Town / City <span class="required">*</span></label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postcode">Postcode / ZIP <span class="required">*</span></label>
+                            <input type="text" id="postcode" name="postcode" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <small class="form-note">Provide a real number from Thailand for trackable delivery (+66 number).</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-section">
+                    <div class="order-summary">
+                        <h3>Product</h3>
+                        <div class="order-items" id="orderItems">
+                            <!-- Cart items will be populated here -->
+                        </div>
+                        
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">฿0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Shipping</span>
+                                <span>Flat rate: ฿200</span>
+                            </div>
+                            <div class="total-row total-final">
+                                <span>Total</span>
+                                <span id="total">฿0</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            <h4 class="payment-method-title">
+                                <i class="fas fa-lock"></i>
+                                Select Payment Method
+                            </h4>
+
+                            <div class="payment-options-grid">
+                                <div class="payment-option">
+                                    <input type="radio" id="bitcoin" name="payment" value="bitcoin" checked>
+                                    <label for="bitcoin">
+                                        <i class="fab fa-bitcoin"></i>
+                                        <div>
+                                            <div class="crypto-name">Bitcoin</div>
+                                            <div class="crypto-code">BTC</div>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="payment-option">
+                                    <input type="radio" id="ethereum" name="payment" value="ethereum">
+                                    <label for="ethereum">
+                                        <i class="fab fa-ethereum"></i>
+                                        <div>
+                                            <div class="crypto-name">Ethereum</div>
+                                            <div class="crypto-code">ETH / ERC20</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Bitcoin Payment Details -->
+                            <div class="payment-details bitcoin-details active" id="bitcoin-payment">
+                                <div class="crypto-payment-info">
+                                    <h4><i class="fab fa-bitcoin"></i> Bitcoin Payment</h4>
+
+                                    <div class="payment-amount-box">
+                                        <div class="payment-amount-label">Amount to Send</div>
+                                        <div class="payment-amount-value" id="btcAmount">฿0</div>
+                                    </div>
+
+                                    <div class="qr-code-container">
+                                        <div class="qr-code">
+                                            <div style="text-align: center; padding: 20px;">
+                                                <i class="fab fa-bitcoin" style="font-size: 3rem; color: #8B5A96; margin-bottom: 10px;"></i>
+                                                <div style="font-size: 0.8rem; color: #636e72;">Generating QR Code...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="crypto-address-box">
+                                        <div class="crypto-address-label">Bitcoin Address</div>
+                                        <div class="crypto-address-display">
+                                            <div class="crypto-address-text">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</div>
+                                            <button class="copy-address" data-address="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa">
+                                                <i class="fas fa-copy"></i> Copy
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="payment-instructions-list">
+                                        <h5>How to Complete Payment:</h5>
+                                        <ol>
+                                            <li>Scan the QR code or copy the Bitcoin address</li>
+                                            <li>Send the exact amount shown above</li>
+                                            <li>Email transaction ID to orders@peptideplaza.com</li>
+                                            <li>Wait for confirmation (usually 10-30 minutes)</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="payment-note">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Send payment after completing your order. We'll confirm and ship within 24 hours.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ethereum Payment Details -->
+                            <div class="payment-details ethereum-details" id="ethereum-payment">
+                                <div class="crypto-payment-info">
+                                    <h4><i class="fab fa-ethereum"></i> Ethereum Payment</h4>
+
+                                    <div class="payment-amount-box">
+                                        <div class="payment-amount-label">Amount to Send</div>
+                                        <div class="payment-amount-value" id="ethAmount">฿0</div>
+                                    </div>
+
+                                    <div class="qr-code-container">
+                                        <div class="qr-code">
+                                            <div style="text-align: center; padding: 20px;">
+                                                <i class="fab fa-ethereum" style="font-size: 3rem; color: #8B5A96; margin-bottom: 10px;"></i>
+                                                <div style="font-size: 0.8rem; color: #636e72;">Generating QR Code...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="crypto-address-box">
+                                        <div class="crypto-address-label">Ethereum Address (ERC20 Compatible)</div>
+                                        <div class="crypto-address-display">
+                                            <div class="crypto-address-text">0x742d35Cc6634C0532925a3b8D4C9db96590c6C87</div>
+                                            <button class="copy-address" data-address="0x742d35Cc6634C0532925a3b8D4C9db96590c6C87">
+                                                <i class="fas fa-copy"></i> Copy
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="payment-instructions-list">
+                                        <h5>How to Complete Payment:</h5>
+                                        <ol>
+                                            <li>Scan the QR code or copy the Ethereum address</li>
+                                            <li>Send ETH or ERC20 tokens worth the amount shown</li>
+                                            <li>Email transaction hash to orders@peptideplaza.com</li>
+                                            <li>Wait for confirmation (usually 2-10 minutes)</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="payment-note">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>Accepts ETH and all ERC20 tokens (USDT, USDC, etc.). Confirm after order.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" form="checkoutForm" class="place-order-btn">
+                            Place order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PeptidePlaza</h4>
+                    <p>Thailand's premier source for research peptides. All products are for research purposes only.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@peptideplaza.com</p>
+                    <p>Support: Available 24/7</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 PeptidePlaza. All rights reserved. Research purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="location-detector.js"></script>
+    <script src="cart-system.js"></script>
+    <script src="checkout-page.js"></script>
+    <script src="mobile-menu.js"></script>
+    <script src="currency-converter.js"></script>
+</body>
+</html>
