@@ -1,0 +1,14 @@
+{
+  "name": "peptideplaza-functions",
+  "version": "1.0.0",
+  "description": "Serverless functions for PeptidePlaza e-commerce",
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^6.9.7",
+    "stripe": "^14.10.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
