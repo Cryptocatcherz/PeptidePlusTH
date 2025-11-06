@@ -136,6 +136,9 @@ async function sendToTelegram(orderData) {
 
 // Format order details for Telegram
 function formatOrderMessage(order) {
+    const currency = order.currency || 'THB';
+    const currencySymbol = order.currencySymbol || '฿';
+
     let message = `🆕 <b>NEW ORDER - ${order.orderId}</b>\n\n`;
 
     // Customer Details
@@ -154,22 +157,24 @@ function formatOrderMessage(order) {
     // Order Items
     message += `🛒 <b>Order Items</b>\n`;
     order.items.forEach((item, index) => {
+        const unitPriceTHB = item.unitPriceTHB || item.unitPrice;
         message += `${index + 1}. ${item.name}\n`;
-        message += `   Qty: ${item.quantity} | Price: ฿${item.unitPrice.toLocaleString()}\n`;
+        message += `   Qty: ${item.quantity} | Price: ฿${unitPriceTHB.toLocaleString()} THB\n`;
     });
     message += `\n`;
 
     // Payment Details
     message += `💳 <b>Payment Information</b>\n`;
     message += `Method: ${order.paymentMethod.toUpperCase()}\n`;
-    message += `Subtotal: ฿${order.subtotal.toLocaleString()}\n`;
-    message += `Shipping: ฿200\n`;
-    message += `<b>Total: ฿${order.total.toLocaleString()}</b>\n\n`;
+    message += `Currency: ${currency}\n`;
+    message += `Subtotal: ฿${order.subtotal.toLocaleString()} THB (${currencySymbol}${order.displaySubtotal} ${currency})\n`;
+    message += `Shipping: ฿200 THB\n`;
+    message += `<b>Total: ฿${order.total.toLocaleString()} THB (${currencySymbol}${order.displayTotal} ${currency})</b>\n\n`;
 
     // Crypto Details (if available)
     if (order.cryptoAmount) {
         message += `💰 <b>Crypto Payment</b>\n`;
-        message += `Amount: ${order.cryptoAmount} ${order.paymentMethod.toUpperCase()}\n\n`;
+        message += `Amount: ${order.cryptoAmount}\n\n`;
     }
 
     message += `⏰ Time: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Bangkok' })} (Thailand)\n`;
@@ -186,6 +191,11 @@ async function sendOrderConfirmation(order) {
     }
 
     try {
+        const currency = order.currency || 'THB';
+        const currencySymbol = order.currencySymbol || '฿';
+        const displaySubtotal = order.displaySubtotal || order.subtotal;
+        const displayTotal = order.displayTotal || order.total;
+
         const emailHTML = `
             <!DOCTYPE html>
             <html>
@@ -215,18 +225,21 @@ async function sendOrderConfirmation(order) {
 
                         <div class="order-details">
                             <h3>Order Items:</h3>
-                            ${order.items.map(item => `
+                            ${order.items.map(item => {
+                                const unitPriceTHB = item.unitPriceTHB || item.unitPrice;
+                                const itemSubtotal = item.quantity * unitPriceTHB;
+                                return `
                                 <div class="item">
                                     <strong>${item.name}</strong><br>
-                                    Quantity: ${item.quantity} | Unit Price: ฿${item.unitPrice.toLocaleString()}<br>
-                                    <strong>Subtotal: ฿${(item.quantity * item.unitPrice).toLocaleString()}</strong>
+                                    Quantity: ${item.quantity} | Unit Price: ฿${unitPriceTHB.toLocaleString()} THB<br>
+                                    <strong>Subtotal: ฿${itemSubtotal.toLocaleString()} THB</strong>
                                 </div>
-                            `).join('')}
+                            `}).join('')}
 
                             <div class="total">
-                                <p>Subtotal: ฿${order.subtotal.toLocaleString()}</p>
-                                <p>Shipping: ฿200</p>
-                                <p>Total: ฿${order.total.toLocaleString()}</p>
+                                <p>Subtotal: ${currencySymbol}${parseFloat(displaySubtotal).toLocaleString()} ${currency}</p>
+                                <p>Shipping: ${currencySymbol}${(200 * (parseFloat(displayTotal) / order.total)).toFixed(2)} ${currency}</p>
+                                <p>Total: ${currencySymbol}${parseFloat(displayTotal).toLocaleString()} ${currency}</p>
                             </div>
                         </div>
 

@@ -4,6 +4,15 @@ class CheckoutPage {
         this.init();
     }
 
+    getCurrencyInfo() {
+        // Get currency info from global currency converter
+        if (window.currencyConverter) {
+            return window.currencyConverter.getCurrentCurrencyInfo();
+        }
+        // Fallback to THB
+        return { code: 'THB', symbol: '฿', rate: 1 };
+    }
+
     async init() {
         this.initPaymentMethods();
         this.initForm();
@@ -58,26 +67,39 @@ class CheckoutPage {
     async fetchCryptoPrices() {
         console.log('Fetching crypto prices...');
 
+        const currencyInfo = this.getCurrencyInfo();
+        const currencyCode = currencyInfo.code.toLowerCase();
+
         try {
             // Using CoinGecko API (free, no auth required)
-            // Get BTC and ETH prices in THB
-            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=thb');
+            // Get BTC and ETH prices in multiple currencies including THB and current currency
+            const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=thb,usd,eur,gbp,aud,cad,sgd,jpy,cny,krw,inr,myr,php,vnd,idr`);
             const data = await response.json();
 
+            // Always store THB prices as base
             this.btcPriceInTHB = data.bitcoin.thb;
             this.ethPriceInTHB = data.ethereum.thb;
 
+            // Store prices in current currency
+            this.btcPriceInCurrentCurrency = data.bitcoin[currencyCode] || (this.btcPriceInTHB * currencyInfo.rate);
+            this.ethPriceInCurrentCurrency = data.ethereum[currencyCode] || (this.ethPriceInTHB * currencyInfo.rate);
+
             console.log('Crypto prices fetched:', {
-                BTC: `฿${this.btcPriceInTHB.toLocaleString()}`,
-                ETH: `฿${this.ethPriceInTHB.toLocaleString()}`
+                BTC_THB: `฿${this.btcPriceInTHB.toLocaleString()}`,
+                ETH_THB: `฿${this.ethPriceInTHB.toLocaleString()}`,
+                BTC_Current: `${currencyInfo.symbol}${this.btcPriceInCurrentCurrency.toLocaleString()}`,
+                ETH_Current: `${currencyInfo.symbol}${this.ethPriceInCurrentCurrency.toLocaleString()}`,
+                Currency: currencyInfo.code
             });
 
             return true;
         } catch (error) {
             console.error('Failed to fetch crypto prices:', error);
-            // Set fallback prices (approximate)
+            // Set fallback prices (approximate in THB)
             this.btcPriceInTHB = 3000000; // ~3M THB per BTC
             this.ethPriceInTHB = 100000;  // ~100K THB per ETH
+            this.btcPriceInCurrentCurrency = this.btcPriceInTHB * currencyInfo.rate;
+            this.ethPriceInCurrentCurrency = this.ethPriceInTHB * currencyInfo.rate;
             console.warn('Using fallback prices');
             return false;
         }
@@ -158,20 +180,26 @@ class CheckoutPage {
     }
 
     createBitcoinQR() {
+        const currencyInfo = this.getCurrencyInfo();
         const btcAddress = this.btcAddress || '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa';
         const container = document.querySelector('#bitcoin-payment .qr-code');
 
-        // Get the total amount from cart
-        let totalAmount = 0;
+        // Get the total amount from cart (in THB)
+        let totalAmountTHB = 0;
         if (window.cartSystem) {
             const totals = window.cartSystem.getTotals();
-            totalAmount = totals.total;
+            totalAmountTHB = totals.total;
         }
+
+        // Convert to current currency for display
+        const totalAmount = totalAmountTHB * currencyInfo.rate;
 
         console.log('Creating Bitcoin QR code...', {
             address: btcAddress,
             container: !!container,
-            amount: totalAmount
+            amountTHB: totalAmountTHB,
+            amountCurrent: totalAmount,
+            currency: currencyInfo.code
         });
 
         if (!container) {
@@ -181,10 +209,13 @@ class CheckoutPage {
 
         container.innerHTML = '<div style="text-align:center;padding:20px;">Loading QR code...</div>';
 
-        // Calculate BTC amount from THB
+        // Calculate BTC amount from current currency
         let btcAmount = 0;
-        if (this.btcPriceInTHB && totalAmount > 0) {
-            btcAmount = totalAmount / this.btcPriceInTHB;
+        if (this.btcPriceInCurrentCurrency && totalAmount > 0) {
+            btcAmount = totalAmount / this.btcPriceInCurrentCurrency;
+        } else if (this.btcPriceInTHB && totalAmountTHB > 0) {
+            // Fallback to THB conversion
+            btcAmount = totalAmountTHB / this.btcPriceInTHB;
         }
 
         // Create Bitcoin URI with amount (BIP21 format)
@@ -195,7 +226,7 @@ class CheckoutPage {
             // Format BTC to 8 decimal places (satoshi precision)
             bitcoinURI += `?amount=${btcAmount.toFixed(8)}`;
             bitcoinURI += `&label=${encodeURIComponent(label)}`;
-            bitcoinURI += `&message=${encodeURIComponent(`฿${totalAmount.toLocaleString()} THB`)}`;
+            bitcoinURI += `&message=${encodeURIComponent(`${currencyInfo.symbol}${totalAmount.toLocaleString()} ${currencyInfo.code}`)}`;
         } else {
             bitcoinURI += `?label=${encodeURIComponent(label)}`;
         }
@@ -271,20 +302,26 @@ class CheckoutPage {
     }
 
     createEthereumQR() {
+        const currencyInfo = this.getCurrencyInfo();
         const ethAddress = this.ethAddress || '0x742d35Cc6634C0532925a3b8D4C9db96590c6C87';
         const container = document.querySelector('#ethereum-payment .qr-code');
 
-        // Get the total amount from cart
-        let totalAmount = 0;
+        // Get the total amount from cart (in THB)
+        let totalAmountTHB = 0;
         if (window.cartSystem) {
             const totals = window.cartSystem.getTotals();
-            totalAmount = totals.total;
+            totalAmountTHB = totals.total;
         }
+
+        // Convert to current currency for display
+        const totalAmount = totalAmountTHB * currencyInfo.rate;
 
         console.log('Creating Ethereum QR code...', {
             address: ethAddress,
             container: !!container,
-            amount: totalAmount
+            amountTHB: totalAmountTHB,
+            amountCurrent: totalAmount,
+            currency: currencyInfo.code
         });
 
         if (!container) {
@@ -294,10 +331,13 @@ class CheckoutPage {
 
         container.innerHTML = '<div style="text-align:center;padding:20px;">Loading QR code...</div>';
 
-        // Calculate ETH amount from THB
+        // Calculate ETH amount from current currency
         let ethAmount = 0;
-        if (this.ethPriceInTHB && totalAmount > 0) {
-            ethAmount = totalAmount / this.ethPriceInTHB;
+        if (this.ethPriceInCurrentCurrency && totalAmount > 0) {
+            ethAmount = totalAmount / this.ethPriceInCurrentCurrency;
+        } else if (this.ethPriceInTHB && totalAmountTHB > 0) {
+            // Fallback to THB conversion
+            ethAmount = totalAmountTHB / this.ethPriceInTHB;
         }
 
         // Create Ethereum URI with value (EIP-681 format)
@@ -370,6 +410,7 @@ class CheckoutPage {
     }
 
     async processOrder() {
+        const currencyInfo = this.getCurrencyInfo();
         const formData = new FormData(document.getElementById('checkoutForm'));
         const orderData = {};
 
@@ -378,22 +419,40 @@ class CheckoutPage {
             orderData[key] = value;
         }
 
-        // Add cart and payment info
+        // Add cart and payment info (all amounts in THB for backend)
         if (window.cartSystem) {
             const totals = window.cartSystem.getTotals();
             orderData.items = window.cartSystem.getItems();
-            orderData.subtotal = totals.subtotal;
-            orderData.total = totals.total;
+            orderData.subtotal = totals.subtotal; // THB amount
+            orderData.total = totals.total; // THB amount
         }
+
+        // Add currency information
+        orderData.currency = currencyInfo.code;
+        orderData.currencySymbol = currencyInfo.symbol;
+        orderData.displaySubtotal = (orderData.subtotal * currencyInfo.rate).toFixed(2);
+        orderData.displayTotal = (orderData.total * currencyInfo.rate).toFixed(2);
 
         orderData.paymentMethod = document.querySelector('input[name="payment"]:checked')?.value;
 
-        // Add crypto amount if available
-        if (orderData.paymentMethod === 'bitcoin' && this.btcPriceInTHB) {
-            const btcAmount = orderData.total / this.btcPriceInTHB;
+        // Add crypto amount if available (convert from current currency)
+        const totalInCurrentCurrency = orderData.total * currencyInfo.rate;
+
+        if (orderData.paymentMethod === 'bitcoin') {
+            let btcAmount = 0;
+            if (this.btcPriceInCurrentCurrency) {
+                btcAmount = totalInCurrentCurrency / this.btcPriceInCurrentCurrency;
+            } else if (this.btcPriceInTHB) {
+                btcAmount = orderData.total / this.btcPriceInTHB;
+            }
             orderData.cryptoAmount = btcAmount.toFixed(8) + ' BTC';
-        } else if (orderData.paymentMethod === 'ethereum' && this.ethPriceInTHB) {
-            const ethAmount = orderData.total / this.ethPriceInTHB;
+        } else if (orderData.paymentMethod === 'ethereum') {
+            let ethAmount = 0;
+            if (this.ethPriceInCurrentCurrency) {
+                ethAmount = totalInCurrentCurrency / this.ethPriceInCurrentCurrency;
+            } else if (this.ethPriceInTHB) {
+                ethAmount = orderData.total / this.ethPriceInTHB;
+            }
             orderData.cryptoAmount = ethAmount.toFixed(6) + ' ETH';
         }
 
@@ -452,7 +511,10 @@ class CheckoutPage {
     }
 
     showOrderConfirmation(orderData, orderId) {
-        const message = `✅ Order Confirmed!\n\nOrder ID: ${orderId}\nTotal: ฿${orderData.total?.toLocaleString() || '0'}\n\nPayment Instructions:\n1. ${orderData.paymentMethod === 'bitcoin' ? 'Send Bitcoin' : 'Send Ethereum'} to the address shown\n2. Email transaction ID to orders@peptideplaza.com\n3. Include your Order ID: ${orderId}\n\nYou will receive confirmation within 30 minutes.`;
+        const currencySymbol = orderData.currencySymbol || '฿';
+        const displayTotal = orderData.displayTotal || orderData.total;
+
+        const message = `✅ Order Confirmed!\n\nOrder ID: ${orderId}\nTotal: ${currencySymbol}${parseFloat(displayTotal).toLocaleString()} ${orderData.currency}\n\nPayment Instructions:\n1. ${orderData.paymentMethod === 'bitcoin' ? 'Send Bitcoin' : 'Send Ethereum'} to the address shown\n2. Email transaction ID to orders@peptideplaza.com\n3. Include your Order ID: ${orderId}\n\nYou will receive confirmation within 30 minutes.`;
 
         alert(message);
 

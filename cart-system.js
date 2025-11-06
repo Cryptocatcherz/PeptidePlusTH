@@ -10,14 +10,34 @@ class CartSystem {
         this.createSlideoutCart();
         this.updateCartDisplay();
         this.bindEvents();
-        
+
         // Ensure cart is hidden on initialization
         this.forceHideCart();
-        
+
         // Make globally accessible
         window.cartSystem = this;
-        
+
         console.log('Cart system initialized with', this.items.length, 'items');
+    }
+
+    getCurrencyInfo() {
+        // Get currency info from global currency converter
+        if (window.currencyConverter) {
+            return window.currencyConverter.getCurrentCurrencyInfo();
+        }
+        // Fallback to THB
+        return { code: 'THB', symbol: '฿', rate: 1 };
+    }
+
+    formatPrice(price, currencyCode) {
+        // Format based on currency
+        if (currencyCode === 'JPY' || currencyCode === 'KRW' || currencyCode === 'VND' || currencyCode === 'IDR') {
+            return Math.round(price).toLocaleString();
+        } else if (currencyCode === 'BTC' || currencyCode === 'ETH') {
+            return price.toFixed(8);
+        } else {
+            return price.toFixed(2);
+        }
     }
     
     forceHideCart() {
@@ -196,6 +216,8 @@ class CartSystem {
     }
 
     updateCheckoutPage(totals) {
+        const currencyInfo = this.getCurrencyInfo();
+
         // Update order items
         const orderItems = document.getElementById('orderItems');
         if (orderItems) {
@@ -211,13 +233,17 @@ class CartSystem {
             } else {
                 let itemsHTML = '';
                 this.items.forEach(item => {
+                    const itemTotalTHB = (item.unitPriceTHB || item.unitPrice) * item.quantity;
+                    const itemTotal = itemTotalTHB * currencyInfo.rate;
+                    const formattedPrice = this.formatPrice(itemTotal, currencyInfo.code);
+
                     itemsHTML += `
                         <div class="order-item">
                             <div class="item-info">
                                 <div class="item-name">${item.name}</div>
                                 <div class="item-details">Quantity: ${item.quantity}</div>
                             </div>
-                            <div class="item-price">฿${(item.unitPrice * item.quantity).toLocaleString()}</div>
+                            <div class="item-price">${currencyInfo.symbol}${formattedPrice}</div>
                         </div>
                     `;
                 });
@@ -231,17 +257,20 @@ class CartSystem {
         const btcAmountElement = document.getElementById('btcAmount');
         const ethAmountElement = document.getElementById('ethAmount');
 
+        const formattedSubtotal = this.formatPrice(totals.subtotal * currencyInfo.rate, currencyInfo.code);
+        const formattedTotal = this.formatPrice(totals.total * currencyInfo.rate, currencyInfo.code);
+
         if (subtotalElement) {
-            subtotalElement.textContent = `฿${totals.subtotal.toLocaleString()}`;
+            subtotalElement.textContent = `${currencyInfo.symbol}${formattedSubtotal}`;
         }
         if (totalElement) {
-            totalElement.textContent = `฿${totals.total.toLocaleString()}`;
+            totalElement.textContent = `${currencyInfo.symbol}${formattedTotal}`;
         }
         if (btcAmountElement) {
-            btcAmountElement.textContent = `฿${totals.total.toLocaleString()}`;
+            btcAmountElement.textContent = `${currencyInfo.symbol}${formattedTotal}`;
         }
         if (ethAmountElement) {
-            ethAmountElement.textContent = `฿${totals.total.toLocaleString()}`;
+            ethAmountElement.textContent = `${currencyInfo.symbol}${formattedTotal}`;
         }
 
         // Show/hide sections based on cart content
@@ -259,7 +288,7 @@ class CartSystem {
             if (placeOrderBtn) placeOrderBtn.style.display = 'block';
         }
 
-        console.log('Checkout page updated:', totals);
+        console.log('Checkout page updated:', totals, 'Currency:', currencyInfo.code);
     }
 
     bindEvents() {
@@ -390,14 +419,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // Extension methods for CartSystem removed - no debug buttons needed
 
 CartSystem.prototype.createSlideoutCart = function() {
+        const currencyInfo = this.getCurrencyInfo();
+
         // Create cart overlay
         const overlay = document.createElement('div');
         overlay.className = 'cart-overlay';
-        
+
         // Create cart slideout
         const slideout = document.createElement('div');
         slideout.className = 'cart-slideout';
-        
+
         slideout.innerHTML = `
             <div class="cart-header">
                 <h3 class="cart-title">Shopping Cart</h3>
@@ -405,27 +436,27 @@ CartSystem.prototype.createSlideoutCart = function() {
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <div class="cart-items" id="slideout-cart-items">
                 <!-- Cart items will be populated here -->
             </div>
-            
+
             <div class="cart-footer">
                 <div class="cart-totals">
                     <div class="cart-total-row">
                         <span>Subtotal</span>
-                        <span id="slideout-subtotal">฿0</span>
+                        <span id="slideout-subtotal">${currencyInfo.symbol}0</span>
                     </div>
                     <div class="cart-total-row">
                         <span>Shipping</span>
-                        <span>฿200</span>
+                        <span id="slideout-shipping">${currencyInfo.symbol}${this.formatPrice(200 * currencyInfo.rate, currencyInfo.code)}</span>
                     </div>
                     <div class="cart-total-row final">
                         <span>Total</span>
-                        <span id="slideout-total">฿200</span>
+                        <span id="slideout-total">${currencyInfo.symbol}${this.formatPrice(200 * currencyInfo.rate, currencyInfo.code)}</span>
                     </div>
                 </div>
-                
+
                 <div class="cart-actions">
                     <button class="cart-checkout-btn">
                         <i class="fas fa-credit-card"></i>
@@ -438,15 +469,15 @@ CartSystem.prototype.createSlideoutCart = function() {
                 </div>
             </div>
         `;
-        
+
         // Add to page
         document.body.appendChild(overlay);
         document.body.appendChild(slideout);
-        
+
         // Store references
         this.cartOverlay = overlay;
         this.cartSlideout = slideout;
-        
+
         console.log('Slideout cart created');
 };
 
@@ -476,13 +507,15 @@ CartSystem.prototype.hideSlideoutCart = function() {
 };
 
 CartSystem.prototype.updateSlideoutCart = function() {
+        const currencyInfo = this.getCurrencyInfo();
         const itemsContainer = document.getElementById('slideout-cart-items');
         const subtotalElement = document.getElementById('slideout-subtotal');
         const totalElement = document.getElementById('slideout-total');
+        const shippingElement = document.getElementById('slideout-shipping');
         const checkoutBtn = document.querySelector('.cart-checkout-btn');
-        
+
         if (!itemsContainer) return;
-        
+
         // Update items
         if (this.items.length === 0) {
             itemsContainer.innerHTML = `
@@ -493,14 +526,19 @@ CartSystem.prototype.updateSlideoutCart = function() {
                     <button class="continue-shopping">Continue Shopping</button>
                 </div>
             `;
-            
+
             if (checkoutBtn) checkoutBtn.disabled = true;
         } else {
             let itemsHTML = '';
-            
+
             this.items.forEach(item => {
-                const itemTotal = (item.unitPrice * item.quantity);
-                
+                const unitPriceTHB = item.unitPriceTHB || item.unitPrice;
+                const unitPrice = unitPriceTHB * currencyInfo.rate;
+                const itemTotal = unitPrice * item.quantity;
+
+                const formattedUnitPrice = this.formatPrice(unitPrice, currencyInfo.code);
+                const formattedItemTotal = this.formatPrice(itemTotal, currencyInfo.code);
+
                 itemsHTML += `
                     <div class="cart-item">
                         <div class="cart-item-image">
@@ -508,8 +546,8 @@ CartSystem.prototype.updateSlideoutCart = function() {
                         </div>
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-meta">Quantity: ${item.quantity} • ฿${item.unitPrice.toLocaleString()} each</div>
-                            <div class="cart-item-price">฿${itemTotal.toLocaleString()}</div>
+                            <div class="cart-item-meta">Quantity: ${item.quantity} • ${currencyInfo.symbol}${formattedUnitPrice} each</div>
+                            <div class="cart-item-price">${currencyInfo.symbol}${formattedItemTotal}</div>
                         </div>
                         <button class="cart-item-remove" data-item-id="${item.id}">
                             <i class="fas fa-trash"></i>
@@ -517,19 +555,26 @@ CartSystem.prototype.updateSlideoutCart = function() {
                     </div>
                 `;
             });
-            
+
             itemsContainer.innerHTML = itemsHTML;
-            
+
             if (checkoutBtn) checkoutBtn.disabled = false;
         }
-        
+
         // Update totals
         const totals = this.calculateTotals();
-        
+
+        const formattedSubtotal = this.formatPrice(totals.subtotal * currencyInfo.rate, currencyInfo.code);
+        const formattedShipping = this.formatPrice(totals.shipping * currencyInfo.rate, currencyInfo.code);
+        const formattedTotal = this.formatPrice(totals.total * currencyInfo.rate, currencyInfo.code);
+
         if (subtotalElement) {
-            subtotalElement.textContent = `฿${totals.subtotal.toLocaleString()}`;
+            subtotalElement.textContent = `${currencyInfo.symbol}${formattedSubtotal}`;
+        }
+        if (shippingElement) {
+            shippingElement.textContent = `${currencyInfo.symbol}${formattedShipping}`;
         }
         if (totalElement) {
-            totalElement.textContent = `฿${totals.total.toLocaleString()}`;
+            totalElement.textContent = `${currencyInfo.symbol}${formattedTotal}`;
         }
 };
