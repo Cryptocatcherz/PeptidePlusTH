@@ -2,8 +2,29 @@
 class ProductPage {
     constructor() {
         this.currentPrice = 1200;
+        this.currentPriceTHB = 1200; // Always store original THB price
         this.selectedQuantity = 5;
         this.init();
+    }
+
+    getCurrencyInfo() {
+        // Get currency info from global currency converter
+        if (window.currencyConverter) {
+            return window.currencyConverter.getCurrentCurrencyInfo();
+        }
+        // Fallback to THB
+        return { code: 'THB', symbol: '฿', rate: 1 };
+    }
+
+    formatPrice(price, currencyCode) {
+        // Format based on currency
+        if (currencyCode === 'JPY' || currencyCode === 'KRW' || currencyCode === 'VND' || currencyCode === 'IDR') {
+            return Math.round(price).toLocaleString();
+        } else if (currencyCode === 'BTC' || currencyCode === 'ETH') {
+            return price.toFixed(8);
+        } else {
+            return price.toFixed(2);
+        }
     }
 
     init() {
@@ -55,21 +76,22 @@ class ProductPage {
             btn.addEventListener('click', () => {
                 // Remove active class from all buttons
                 quantityBtns.forEach(b => b.classList.remove('active'));
-                
+
                 // Add active class to clicked button
                 btn.classList.add('active');
-                
+
                 // Update price and quantity
                 this.selectedQuantity = parseInt(btn.dataset.qty);
-                this.currentPrice = parseInt(btn.dataset.price);
-                
+                this.currentPriceTHB = parseInt(btn.dataset.price);
+
+                // Convert price to current currency
+                const currencyInfo = this.getCurrencyInfo();
+                this.currentPrice = this.currentPriceTHB * currencyInfo.rate;
+
                 // Update display with currency conversion
                 if (currentAmount) {
-                    if (window.currencyConverter) {
-                        currentAmount.textContent = window.currencyConverter.convertPrice(this.currentPrice);
-                    } else {
-                        currentAmount.textContent = `฿${this.currentPrice.toLocaleString()}`;
-                    }
+                    const formattedPrice = this.formatPrice(this.currentPrice, currencyInfo.code);
+                    currentAmount.textContent = `${currencyInfo.symbol}${formattedPrice}`;
                 }
 
                 // Add animation effect
@@ -156,15 +178,20 @@ class ProductPage {
 
     addToCart() {
         const productName = document.querySelector('.product-info h1').textContent;
-        const productPrice = `฿${this.currentPrice.toLocaleString()}`;
-        
-        // Create cart item
+
+        // Get current currency info
+        const currencyInfo = this.getCurrencyInfo();
+        const formattedPrice = this.formatPrice(this.currentPrice, currencyInfo.code);
+
+        // Create cart item with both THB and current currency
         const cartItem = {
+            id: Date.now(),
             name: `${productName} - ${this.selectedQuantity} vials`,
-            price: productPrice,
+            price: `${currencyInfo.symbol}${formattedPrice}`,
             quantity: this.selectedQuantity,
             unitPrice: this.currentPrice,
-            id: Date.now()
+            unitPriceTHB: this.currentPriceTHB, // Store THB price for conversion
+            currency: currencyInfo.code
         };
 
         console.log('Attempting to add to cart:', cartItem);
