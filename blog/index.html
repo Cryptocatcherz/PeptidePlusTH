@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peptide Research Blog - Expert Guides, Comparisons & Protocols | PeptidePlaza</title>
+    <meta name="description" content="Expert peptide research guides covering BPC-157, TB-500, Semaglutide, CJC-1295, and more. Learn about healing, weight loss, growth hormone protocols, dosing, and reconstitution.">
+    <meta name="keywords" content="peptide blog, peptide research, BPC-157 guide, TB-500 guide, semaglutide guide, peptide protocols, healing peptides, weight loss peptides">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Peptide Research Blog - Expert Guides & Protocols">
+    <meta property="og:description" content="Comprehensive peptide research guides, comparisons, and protocols from industry experts.">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../product-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #8B5A96 0%, #6B4C93 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 90, 150, 0.2);
+        }
+
+        .blog-card-header {
+            background: linear-gradient(135deg, rgba(139, 90, 150, 0.08) 0%, rgba(107, 76, 147, 0.08) 100%);
+            padding: 20px;
+            border-bottom: 3px solid #8B5A96;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: #8B5A96;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .blog-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .blog-card-body {
+            padding: 25px;
+        }
+
+        .blog-card-excerpt {
+            color: #636e72;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.85rem;
+            color: #636e72;
+        }
+
+        .blog-card-meta i {
+            margin-right: 5px;
+        }
+
+        .blog-read-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B5A96 0%, #6B4C93 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .blog-read-more:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(139, 90, 150, 0.3);
+        }
+
+        .blog-categories {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .category-filter {
+            padding: 10px 20px;
+            border: 2px solid #8B5A96;
+            border-radius: 25px;
+            background: white;
+            color: #8B5A96;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-filter:hover, .category-filter.active {
+            background: #8B5A96;
+            color: white;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffc107;
+            color: #2d3436;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <span class="trust-badge">Reliable source in <span id="country-name-top"></span></span>
+                <div class="top-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../reviews.html">Reviews</a>
+                    <a href="../policy.html">Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-dna"></i>
+                        <div class="logo-text">
+                            <h1>PEPTIDE PLAZA <span id="country-code">TH</span></h1>
+                            <span>Premium Research Peptides</span>
+                        </div>
+                    </a>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#products" class="nav-link">Products</a></li>
+                    <li><a href="../faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: #8B5A96; font-weight: 600;">Blog</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Peptide Research Blog</h1>
+            <p>Expert guides, protocols, and comparisons to help you make informed decisions about peptide research</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Home</a> / <span>Blog</span>
+        </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-container">
+        <div class="blog-categories">
+            <button class="category-filter active" data-category="all">All Posts</button>
+            <button class="category-filter" data-category="healing">Healing & Recovery</button>
+            <button class="category-filter" data-category="weight-loss">Weight Loss</button>
+            <button class="category-filter" data-category="growth-hormone">Growth Hormone</button>
+            <button class="category-filter" data-category="guides">How-To Guides</button>
+        </div>
+
+        <div class="blog-grid">
+            <!-- BPC-157 vs TB-500 -->
+            <article class="blog-card" data-category="healing">
+                <div class="blog-card-header" style="position: relative;">
+                    <span class="featured-badge">Popular</span>
+                    <span class="blog-category">Healing & Recovery</span>
+                    <h3>BPC-157 vs TB-500: Which Healing Peptide is Better?</h3>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-card-excerpt">
+                        Complete comparison of the two most popular healing peptides. Learn which one is best for injury recovery, gut health, tendon repair, and more.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-clock"></i> 12 min read</span>
+                        <span><i class="fas fa-calendar"></i> Jan 2025</span>
+                    </div>
+                    <a href="bpc-157-vs-tb-500-comparison.html" class="blog-read-more">Read Full Guide →</a>
+                </div>
+            </article>
+
+            <!-- Semaglutide Weight Loss -->
+            <article class="blog-card" data-category="weight-loss">
+                <div class="blog-card-header" style="position: relative;">
+                    <span class="featured-badge">Trending</span>
+                    <span class="blog-category">Weight Loss</span>
+                    <h3>Semaglutide for Weight Loss: Complete Guide & Results</h3>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-card-excerpt">
+                        Everything you need to know about Semaglutide for weight loss research. Includes dosing protocols, expected timeline, side effects, and real results data.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-clock"></i> 15 min read</span>
+                        <span><i class="fas fa-calendar"></i> Jan 2025</span>
+                    </div>
+                    <a href="semaglutide-weight-loss-guide.html" class="blog-read-more">Read Full Guide →</a>
+                </div>
+            </article>
+
+            <!-- GLP-1 Comparison -->
+            <article class="blog-card" data-category="weight-loss">
+                <div class="blog-card-header">
+                    <span class="blog-category">Weight Loss</span>
+                    <h3>Semaglutide vs Tirzepatide vs Retatrutide: Which GLP-1 is Best?</h3>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-card-excerpt">
+                        Head-to-head comparison of all three GLP-1 peptides. Learn the differences between single, dual, and triple agonists and which delivers the best results.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-clock"></i> 14 min read</span>
+                        <span><i class="fas fa-calendar"></i> Jan 2025</span>
+                    </div>
+                    <a href="glp1-peptides-comparison.html" class="blog-read-more">Read Full Guide →</a>
+                </div>
+            </article>
+
+            <!-- CJC-1295 & Ipamorelin Stack -->
+            <article class="blog-card" data-category="growth-hormone">
+                <div class="blog-card-header" style="position: relative;">
+                    <span class="featured-badge">Popular</span>
+                    <span class="blog-category">Growth Hormone</span>
+                    <h3>CJC-1295 & Ipamorelin Stack: The Ultimate GH Protocol</h3>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-card-excerpt">
+                        The gold standard growth hormone stack explained. Complete dosing protocols, timing strategies, expected results, and why this combination works so well.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-clock"></i> 13 min read</span>
+                        <span><i class="fas fa-calendar"></i> Jan 2025</span>
+                    </div>
+                    <a href="cjc-1295-ipamorelin-stack.html" class="blog-read-more">Read Full Guide →</a>
+                </div>
+            </article>
+
+            <!-- Peptide Reconstitution -->
+            <article class="blog-card" data-category="guides">
+                <div class="blog-card-header">
+                    <span class="blog-category">How-To Guide</span>
+                    <h3>How to Reconstitute Peptides: Step-by-Step Guide with BAC Water</h3>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-card-excerpt">
+                        Essential guide for beginners and experts. Learn proper reconstitution technique, dosing calculations, storage guidelines, and common mistakes to avoid.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-clock"></i> 10 min read</span>
+                        <span><i class="fas fa-calendar"></i> Jan 2025</span>
+                    </div>
+                    <a href="peptide-reconstitution-guide.html" class="blog-read-more">Read Full Guide →</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="background: linear-gradient(135deg, #8B5A96 0%, #6B4C93 100%); color: white; padding: 60px 30px; border-radius: 12px; text-align: center; margin-top: 80px;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: white;">Ready to Start Your Research?</h2>
+            <p style="font-size: 1.1rem; opacity: 0.95; max-width: 600px; margin: 0 auto 30px;">
+                Browse our complete collection of lab-verified, research-grade peptides with fast, discreet delivery.
+            </p>
+            <a href="../index.html#products" style="display: inline-block; background: white; color: #8B5A96; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease;">
+                View All Peptides →
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PeptidePlaza<span id="country-code-footer">TH</span></h4>
+                    <p>Premier source for research peptides. All products are for research purposes only.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#products">Products</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../faq.html">FAQ</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Popular Posts</h4>
+                    <ul>
+                        <li><a href="bpc-157-vs-tb-500-comparison.html">BPC-157 vs TB-500</a></li>
+                        <li><a href="semaglutide-weight-loss-guide.html">Semaglutide Guide</a></li>
+                        <li><a href="cjc-1295-ipamorelin-stack.html">CJC & Ipamorelin Stack</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: support@peptideplaza.com</p>
+                    <p>Support: 24/7 Available</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 PeptidePlaza<span id="country-code-footer2">TH</span>. All rights reserved. Research purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../location-detector.js"></script>
+    <script src="../cart-system.js"></script>
+    <script src="../currency-converter.js"></script>
+
+    <script>
+        // Simple category filter
+        document.querySelectorAll('.category-filter').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.category-filter').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+
+                // Filter cards
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
