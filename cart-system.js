@@ -375,31 +375,12 @@ class CartSystem {
 
 // Initialize cart system when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Cart system initialization DISABLED to debug cart display issue');
-    
-    // Add global method to hide any cart displays
-    window.hideCart = () => {
-        // Remove any cart elements that might exist
-        const cartElements = document.querySelectorAll('[class*="cart-"], .cart-overlay, .cart-slideout');
-        cartElements.forEach(el => {
-            if (!el.classList.contains('cart-btn') && !el.classList.contains('cart-count')) {
-                el.style.display = 'none';
-                el.remove();
-            }
-        });
-        console.log('All cart displays forcefully hidden');
-    };
-    
-    // Immediately hide any cart displays
-    setTimeout(() => {
-        window.hideCart();
-    }, 100);
-    
-    /* TEMPORARILY DISABLED - UNCOMMENT TO RE-ENABLE CART
+    console.log('Initializing cart system...');
+
     try {
         const cartSystem = new CartSystem();
         console.log('Cart system initialized successfully');
-        
+
         // Add global method to hide cart
         window.hideCart = () => {
             if (cartSystem.cartOverlay && cartSystem.cartSlideout) {
@@ -409,11 +390,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Cart hidden via global method');
             }
         };
-        
+
     } catch (error) {
         console.error('Error initializing cart system:', error);
     }
-    */
 });
 
 // Extension methods for CartSystem removed - no debug buttons needed
